@@ -70,21 +70,101 @@ namespace LP2_TP_Library
         #endregion
 
         #region Metodos
+        /// <summary>
+        /// Obter a posição da musica na lista
+        /// </summary>
+        /// <param name="musicas"></param>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static int ObterMusicaIndex(List<Musicas> musicas, string nome)
+        {
+            for (int i = 0; i < musicas.Count; i++)
+            {
+                //Se encontrar a musica
+                if (musicas[i].nome == nome)
+                    //retorna a sua posição
+                    return i;
+            }
+            //Se não encontrou retorna -1
+            return -1;
+        }
 
+        /// <summary>
+        /// Verifica se a musica existe
+        /// </summary>
+        /// <param name="musicas"></param>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static bool ExisteMusica(List<Musicas> musicas, string nome)
+        {
+            int index = ObterMusicaIndex(musicas, nome);
+            if (index != -1)
+            {
+                //Se o titulo da musica de indice index corresponder a titulo
+                if (musicas[index].nome == nome)
+                    //Retorna true pois existe
+                    return true;
+            }
+            //Retorna falso se não existir
+            return false;
+        }
 
-
+        /// <summary>
+        /// Regista uma nova musica
+        /// </summary>
+        /// <param name="musicas"></param>
+        /// <param name="novaMusica"></param>
+        /// <returns></returns>
+        public static bool RegistarMusica(List<Musicas> musicas, Musicas novaMusica)
+        {
+            //Se não existir nenhuma musica com o mesmo nome
+            if (ExisteMusica(musicas, novaMusica.nome) == false)
+            {
+                //Adicionar uma nova musica
+                musicas.Add(novaMusica);
+                return true;
+            }
+            //Caso já exista uma musica com o nome lido retorna false
+            return false;
+        }
+        
+        /// <summary>
+        /// Remover uma musica em especifico
+        /// </summary>
+        /// <param name="musicas"></param>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static bool RemoverMusica(List<Musicas> musicas, string nome)
+        {
+            {
+                int index = ObterMusicaIndex(musicas, nome);
+                if (index != -1)
+                {
+                    //Se encontrar uma musica com o titulo lido
+                    if (musicas[index].nome == nome)
+                    {
+                        //Remover a musica de indice index
+                        musicas.RemoveAt(index);
+                        //Retorna verdadeiro pq a musica foi removida
+                        return true;
+                    }
+                }
+                //Retorna false pq não conseguiu remover a musica
+                return false;
+            }
+        }
         #endregion
 
         #region Overrides
-
+        /// <summary>
+        /// Override que retorna toda a informação sobre as musicas
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string output = string.Format("\nNome: {0}\nCódigo: {1}", nome, codigoMusica);
-            //completar
-
             return output;
         }
         #endregion
-        //completar override
     }
 }
