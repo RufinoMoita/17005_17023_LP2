@@ -37,10 +37,10 @@ namespace Main
             // Variavel bool, vai permitir que o menu se repita até que o utilizador pretenda sair
             bool voltar = true;
 
-            // Char op que vai guardar a opção pretendida
+            // Char opcao que vai guardar a opção pretendida
             char opcao;
 
-            //variaveis que armazenam os nomes
+            //variaveis que armazenam dados temporariamente
             string nomeArtista, tipoArtista, nomeAlbum, nomeMusica, estilo;
             int duracao, unidadesVendidas, codigoArtista = 0, codigoAlbum = 0, codigoMusica = 0, ano;
             #endregion
@@ -49,8 +49,8 @@ namespace Main
             // Variaveis que vão guardar os dados
             string artistaJSON, albumJSON;
             // Caminho para os ficheiros .json
-            string userPath = Path.GetFullPath(Path.Combine(@"../../Utilizadores.json"));
-            string projetosPath = Path.GetFullPath(Path.Combine(@"../../Projetos.json"));
+            string userPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
+            string projetosPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
             // Instanciar JavaScriptSerializer para converter o objeto para JSON
             var javaScriptSerializer = new JavaScriptSerializer();
             #endregion
