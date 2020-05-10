@@ -17,7 +17,7 @@ namespace LP2_TP_Library
 {
     public class Albuns
     {
-         #region Estado
+        #region Estado
 
         int codigoAlbum;
         string titulo;

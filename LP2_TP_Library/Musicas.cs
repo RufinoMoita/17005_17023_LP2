@@ -69,7 +69,7 @@ namespace LP2_TP_Library
 
         #endregion
 
-        #region Metodos
+    #region Metodos
         /// <summary>
         /// Obter a posição da musica na lista
         /// </summary>
@@ -153,9 +153,9 @@ namespace LP2_TP_Library
                 return false;
             }
         }
-        #endregion
+    #endregion
 
-        #region Overrides
+    #region Overrides
         /// <summary>
         /// Override que retorna toda a informação sobre as musicas
         /// </summary>
@@ -165,6 +165,6 @@ namespace LP2_TP_Library
             string output = string.Format("\nNome: {0}\nCódigo: {1}", nome, codigoMusica);
             return output;
         }
-        #endregion
+    #endregion
     }
 }
