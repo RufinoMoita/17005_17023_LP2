@@ -49,19 +49,19 @@ namespace Main
             // Variaveis que vão guardar os dados
             string artistaJSON, albumJSON;
             // Caminho para os ficheiros .json
-            string userPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
-            string projetosPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
+            string artistaPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
+            string albumPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
             // Instanciar JavaScriptSerializer para converter o objeto para JSON
             var javaScriptSerializer = new JavaScriptSerializer();
             #endregion
 
             #region Inicializacao
-            // Se o caminho para o ficheiro JSON de Utilizadores e Projetos existir...
-            if (File.Exists(userPath) && File.Exists(projetosPath))
+            // Se o caminho para o ficheiro JSON de Artistas e Albuns existir...
+            if (File.Exists(artistaPath) && File.Exists(albumPath))
             {
                 // Lê os dados do ficheiro .JSON
-                artistaJSON = File.ReadAllText(userPath);
-                albumJSON = File.ReadAllText(projetosPath);
+                artistaJSON = File.ReadAllText(artistaPath);
+                albumJSON = File.ReadAllText(albumPath);
                 // Importa os dados para o objecto
                 artistas = javaScriptSerializer.Deserialize<List<Artistas>>(artistaJSON);
                 albuns = javaScriptSerializer.Deserialize<List<Albuns>>(albumJSON);
