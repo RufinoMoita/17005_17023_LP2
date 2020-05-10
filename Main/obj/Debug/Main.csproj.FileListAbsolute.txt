@@ -1,0 +1,10 @@
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\bin\Debug\Main.exe.config
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\bin\Debug\Main.exe
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\bin\Debug\Main.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\bin\Debug\LP2_TP_Library.dll
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\bin\Debug\LP2_TP_Library.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.csprojAssemblyReference.cache
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.csproj.CopyComplete
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.exe
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.pdb

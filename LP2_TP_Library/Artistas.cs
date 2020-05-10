@@ -21,9 +21,7 @@ namespace LP2_TP_Library
         string tipo;
         string nomeArtista;
         int codigoArtista;
-        int dia;
-        int mes;
-        int ano;
+        DateTime data;
         int duracao;
         List<Albuns> albuns = new List<Albuns>();
 
@@ -49,14 +47,12 @@ namespace LP2_TP_Library
         /// <param name="ano"></param>
         /// <param name="duracao"></param>
         /// <param name="fimContrato"></param>
-        public Artistas(string tipo, string nomeArtista, int codigoArtista, int dia, int mes, int ano, int duracao)
+        public Artistas(string tipo, string nomeArtista, int codigoArtista, DateTime data, int duracao)
         {
             this.tipo = tipo;
             this.nomeArtista = nomeArtista;
             this.codigoArtista = codigoArtista;
-            this.dia = dia;
-            this.mes = mes;
-            this.ano = ano;
+            this.data = data;
             this.duracao = duracao;
         }
 
@@ -91,32 +87,13 @@ namespace LP2_TP_Library
             set { codigoArtista = value; }
         }
 
-        /// <summary>
-        /// Obtém e define o dia do inicio de contrato
-        /// </summary>
-        public int Dia
+        public DateTime Data
         {
-            get { return dia; }
-            set { if (value < 31) dia = value; }
+            get { return data; }
+            set { data = DateTime.Today;  }
         }
 
-        /// <summary>
-        /// Obtém e define o mes do inicio de contrato
-        /// </summary>
-        public int Mes
-        {
-            get { return mes; }
-            set { if (value < 12) mes = value; }
-        }
 
-        /// <summary>
-        /// Obtém e define o ano do inicio de contrato
-        /// </summary>
-        public int Ano
-        {
-            get { return ano; }
-            set { if (value <= 2020 && value >= 0) ano = value; }
-        }
 
         /// <summary>
         /// Obtém e define a duração do contrato
@@ -259,8 +236,8 @@ namespace LP2_TP_Library
         /// <returns></returns>
         public override string ToString()
     {
-        string output = string.Format("\nNome: {0}\nTipo: {1}\nCódigo: {2}\nInício do contrato:{3}/{4}/{5}\n",
-            nomeArtista, tipo, codigoArtista, dia, mes, ano);
+        string output = string.Format("\nNome: {0}\nTipo: {1}\nCódigo: {2}\nInício do contrato:{3}\n",
+            nomeArtista, tipo, codigoArtista, data);
 
             //Percorrer todos os albuns do artista
             for (int i = 0; i < albuns.Count; i++)
