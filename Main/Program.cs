@@ -47,24 +47,28 @@ namespace Main
 
             #region JSON Files
             // Variaveis que vão guardar os dados
-            string artistaJSON, albumJSON;
+            string artistaJSON, albumJSON, musicaJSON;
             // Caminho para os ficheiros .json
             string artistaPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
             string albumPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
+            string musicaPath = Path.GetFullPath(Path.Combine(@"../../Musicas.json"));
             // Instanciar JavaScriptSerializer para converter o objeto para JSON
             var javaScriptSerializer = new JavaScriptSerializer();
             #endregion
 
             #region Inicializacao
-            // Se o caminho para o ficheiro JSON de Artistas e Albuns existir...
-            if (File.Exists(artistaPath) && File.Exists(albumPath))
+            // Se o caminho para o ficheiro JSON de Artistas, Albuns e Musicas existir...
+            if (File.Exists(artistaPath) && File.Exists(albumPath) && File.Exists(musicaPath))
             {
                 // Lê os dados do ficheiro .JSON
                 artistaJSON = File.ReadAllText(artistaPath);
                 albumJSON = File.ReadAllText(albumPath);
+                musicaJSON = File.ReadAllText(musicaPath);
+
                 // Importa os dados para o objecto
                 artistas = javaScriptSerializer.Deserialize<List<Artistas>>(artistaJSON);
                 albuns = javaScriptSerializer.Deserialize<List<Albuns>>(albumJSON);
+                musicas = javaScriptSerializer.Deserialize<List<Musicas>>(musicaJSON);
             }
             #endregion
 
@@ -75,9 +79,12 @@ namespace Main
                 // Serializa o objeto para JSON e guarda-o numa string 
                 artistaJSON = javaScriptSerializer.Serialize(artistas);
                 albumJSON = javaScriptSerializer.Serialize(albuns);
+                musicaJSON = javaScriptSerializer.Serialize(musicas);
                 // Escreve o texto nas strings nos respetivos ficheiros *.json
-                File.WriteAllText(userPath, artistaJSON);
-                File.WriteAllText(projetosPath, albumJSON);
+                File.WriteAllText(artistaPath, artistaJSON);
+                File.WriteAllText(albumPath, albumJSON);
+                File.WriteAllText(musicaPath, musicaJSON);
+
                 #endregion
 
                 #region Início
@@ -125,7 +132,7 @@ namespace Main
                         Console.Clear();
 
                         // Criar um novo artista
-                        Artistas novoArtista = new Artistas(tipoArtista, nomeArtista, codigoArtista, DateTime.Today, duracao);
+                        Artistas novoArtista = new Artistas(tipoArtista, nomeArtista, codigoArtista, DateTime.Now, duracao);
 
                         // Regista o novo artista
                         Console.WriteLine(Artistas.RegistarArtista(artistas, novoArtista) ? "O artista {0} foi criado" : "O artista {0} não foi criado", nomeArtista);
@@ -148,7 +155,6 @@ namespace Main
                         Console.WriteLine("--Listagem de Artistas--\n\n");
                         for (int i = 0; i < artistas.Count; i++)
                             Console.WriteLine("[{0}] {1}", i, artistas[i].ToString());
-
                         Console.ReadKey();
                     }
                     #endregion
@@ -161,8 +167,8 @@ namespace Main
                         Console.WriteLine("========= Albuns Disponíveis =========");
                         for (int i = 0; i < albuns.Count; i++)
                             Console.WriteLine(albuns[i].ToString());
-                        Console.Write("\n\nNome: "); nomeArtista = Console.ReadLine();
-                        Console.Write("\nAlbum: "); nomeAlbum = Console.ReadLine();
+                        Console.Write("\n\nNome do artista: "); nomeArtista = Console.ReadLine();
+                        Console.Write("\nNome do album: "); nomeAlbum = Console.ReadLine();
                         Console.Clear();
                         Console.WriteLine(Artistas.AtribuirAlbum(artistas, nomeArtista, albuns, nomeAlbum) ? "{0} atribuído a {1}" : "Não foi possível atribuir o album {0} ao artista {1}", nomeAlbum, nomeArtista);
                     }
@@ -171,7 +177,7 @@ namespace Main
                 #endregion
 
                 #region Albuns
-                else if (opcao == 2)
+                else if (opcao == '2') //Gestão dos albuns
                 {
                     #region Menu
                     Console.Clear();
@@ -245,8 +251,8 @@ namespace Main
                         Console.WriteLine("========= Musicas Disponíveis =========");
                         for (int i = 0; i < musicas.Count; i++)
                             Console.WriteLine(musicas[i].ToString());
-                        Console.Write("\n\nNome: "); nomeAlbum = Console.ReadLine();
-                        Console.Write("\nAlbum: "); nomeMusica = Console.ReadLine();
+                        Console.Write("\n\nNome do Album: "); nomeAlbum = Console.ReadLine();
+                        Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
                         Console.Clear();
                         Console.WriteLine(Albuns.AtribuirMusica(albuns, nomeAlbum, musicas, nomeMusica) ? "{0} atribuída a {1}" : "Não foi possível atribuir a musica {0} ao album {1}", nomeMusica, nomeAlbum);
                     }
@@ -255,7 +261,7 @@ namespace Main
                 #endregion
 
                 #region Musicas
-                else if (opcao == 3)
+                else if (opcao == '3') //Gestão das musicas
                 {
                     #region Menu
                     Console.Clear();

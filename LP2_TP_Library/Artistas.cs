@@ -75,7 +75,7 @@ namespace LP2_TP_Library
         public string NomeArtista
         {
             get { return nomeArtista; }
-            set { value = nomeArtista; }
+            set { nomeArtista = value; }
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace LP2_TP_Library
         public DateTime Data
         {
             get { return data; }
-            set { data = DateTime.Today;  }
+            set { data = DateTime.Now; }
         }
 
 

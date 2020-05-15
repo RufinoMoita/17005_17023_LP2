@@ -102,7 +102,7 @@ namespace LP2_TP_Library
         public int UnidadesVendidas
         {
             get { return unidadesVendidas; }
-            set { value = unidadesVendidas; }
+            set { unidadesVendidas = value; }
         }
 
         /// <summary>
@@ -241,6 +241,7 @@ namespace LP2_TP_Library
             string output = string.Format("\nTitulo: {0}\nCódigo: {1}\nAno de lançamento: {2}\nEstilo: {3}\nUnidades vendidas: {4}"
                 , titulo, codigoAlbum, ano, estilo, unidadesVendidas);
 
+        Console.WriteLine("---MUSICAS---");
         //Percorrer todas as musicas do album
         for (int i = 0; i < musicas.Count; i++)
             {
@@ -251,6 +252,5 @@ namespace LP2_TP_Library
         }
 
         #endregion
-        //completar override
     }
 }
