@@ -19,18 +19,6 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            #region Objetos
-
-            //Lista objeto de artistas
-            List<Artistas> artistas = new List<Artistas>();
-
-            //Listas objeto de albuns
-            List<Albuns> albuns = new List<Albuns>();
-
-            //Lista objeto de musicas
-            List<Musicas> musicas = new List<Musicas>();
-
-            #endregion
 
             #region Variaveis
 
@@ -117,13 +105,13 @@ namespace Main
                         //Incrementar o código do artista
                         codigoArtista++;
 
-                        Console.WriteLine("--Adicionar Artista--\n\n");
+                        Console.WriteLine("--Adicionar Artista--\n");
 
                         // Pede o nome do artista
                         Console.Write("\nNome: "); nomeArtista = Console.ReadLine();
 
                         // Pede o tipo do artista
-                        Console.Write("\nTipo(cantor, banda, instrumentista):"); tipoArtista = Console.ReadLine();
+                        Console.Write("\nTipo:"); tipoArtista = Console.ReadLine();
 
                         //Pede a duração do contrato
                         Console.Write("\nDuração do contrato: "); duracao = int.Parse(Console.ReadLine());
