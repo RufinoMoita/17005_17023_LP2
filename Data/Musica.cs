@@ -12,7 +12,5 @@ namespace Data
         string nome;
         int codigoMusica;
         #endregion
-
-
     }
 }

@@ -19,6 +19,18 @@ namespace Main
     {
         static void Main(string[] args)
         {
+            #region Objetos
+
+            //Lista objeto de artistas
+            List<Artistas> artistas = new List<Artistas>();
+
+            //Listas objeto de albuns
+            List<Albuns> albuns = new List<Albuns>();
+
+            //Lista objeto de musicas
+            List<Musicas> musicas = new List<Musicas>();
+
+            #endregion
 
             #region Variaveis
 
