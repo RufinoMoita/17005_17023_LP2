@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97A9E028-AFF1-4F31-95C7-FEC1DAD049C0}</ProjectGuid>
+    <ProjectGuid>{E29107F8-87F5-4CDB-B4CF-0FDE4FEC169B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Main</RootNamespace>
-    <AssemblyName>Main</AssemblyName>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,17 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Album.cs" />
+    <Compile Include="Artista.cs" />
+    <Compile Include="Musica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\BO.csproj">
-      <Project>{e29107f8-87f5-4cdb-b4cf-0fde4fec169b}</Project>
-      <Name>BO</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

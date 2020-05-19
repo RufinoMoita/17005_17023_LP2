@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E29107F8-87F5-4CDB-B4CF-0FDE4FEC169B}</ProjectGuid>
+    <ProjectGuid>{B49F3A48-0F29-4574-96D6-A006DABC89F1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Data</RootNamespace>
-    <AssemblyName>Data</AssemblyName>
+    <RootNamespace>DL</RootNamespace>
+    <AssemblyName>DL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,14 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Album.cs" />
-    <Compile Include="Artista.cs" />
-    <Compile Include="Data.cs" />
-    <Compile Include="Musica.cs" />
+    <Compile Include="Albuns.cs" />
+    <Compile Include="Artistas.cs" />
+    <Compile Include="Musicas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\BO.csproj">
+      <Project>{e29107f8-87f5-4cdb-b4cf-0fde4fec169b}</Project>
+      <Name>BO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

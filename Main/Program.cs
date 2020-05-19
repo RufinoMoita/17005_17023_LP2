@@ -9,7 +9,7 @@
 
 using System;
 using System.Collections.Generic;
-using LP2_TP_Library;
+using BO;
 using System.Web.Script.Serialization;
 using System.IO;
 
@@ -19,18 +19,6 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            #region Objetos
-
-            //Lista objeto de artistas
-            List<Artistas> artistas = new List<Artistas>();
-
-            //Listas objeto de albuns
-            List<Albuns> albuns = new List<Albuns>();
-
-            //Lista objeto de musicas
-            List<Musicas> musicas = new List<Musicas>();
-
-            #endregion
 
             #region Variaveis
 
@@ -45,45 +33,43 @@ namespace Main
             int duracao, unidadesVendidas, codigoArtista = 0, codigoAlbum = 0, codigoMusica = 0, ano;
             #endregion
 
-            #region JSON Files
-            // Variaveis que vão guardar os dados
-            string artistaJSON, albumJSON, musicaJSON;
-            // Caminho para os ficheiros .json
-            string artistaPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
-            string albumPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
-            string musicaPath = Path.GetFullPath(Path.Combine(@"../../Musicas.json"));
-            // Instanciar JavaScriptSerializer para converter o objeto para JSON
-            var javaScriptSerializer = new JavaScriptSerializer();
-            #endregion
+            #region JSON
+            //// Variaveis que vão guardar os dados
+            //string artistaJSON, albumJSON, musicaJSON;
+            //// Caminho para os ficheiros .json
+            //string artistaPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
+            //string albumPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
+            //string musicaPath = Path.GetFullPath(Path.Combine(@"../../Musicas.json"));
+            //// Instanciar JavaScriptSerializer para converter o objeto para JSON
+            //var javaScriptSerializer = new JavaScriptSerializer();
 
-            #region Inicializacao
-            // Se o caminho para o ficheiro JSON de Artistas, Albuns e Musicas existir...
-            if (File.Exists(artistaPath) && File.Exists(albumPath) && File.Exists(musicaPath))
-            {
-                // Lê os dados do ficheiro .JSON
-                artistaJSON = File.ReadAllText(artistaPath);
-                albumJSON = File.ReadAllText(albumPath);
-                musicaJSON = File.ReadAllText(musicaPath);
+            //// Se o caminho para o ficheiro JSON de Artistas, Albuns e Musicas existir...
+            //if (File.Exists(artistaPath) && File.Exists(albumPath) && File.Exists(musicaPath))
+            //{
+            //    // Lê os dados do ficheiro .JSON
+            //    artistaJSON = File.ReadAllText(artistaPath);
+            //    albumJSON = File.ReadAllText(albumPath);
+            //    musicaJSON = File.ReadAllText(musicaPath);
 
-                // Importa os dados para o objecto
-                artistas = javaScriptSerializer.Deserialize<List<Artistas>>(artistaJSON);
-                albuns = javaScriptSerializer.Deserialize<List<Albuns>>(albumJSON);
-                musicas = javaScriptSerializer.Deserialize<List<Musicas>>(musicaJSON);
-            }
+            //    // Importa os dados para o objecto
+            //    artistas = javaScriptSerializer.Deserialize<List<Artista>>(artistaJSON);
+            //    albuns = javaScriptSerializer.Deserialize<List<Album>>(albumJSON);
+            //    musicas = javaScriptSerializer.Deserialize<List<Musica>>(musicaJSON);
+            //}
             #endregion
 
             #region Menu
             while (voltar != false)
             {
                 #region Gravar JSON
-                // Serializa o objeto para JSON e guarda-o numa string 
-                artistaJSON = javaScriptSerializer.Serialize(artistas);
-                albumJSON = javaScriptSerializer.Serialize(albuns);
-                musicaJSON = javaScriptSerializer.Serialize(musicas);
-                // Escreve o texto nas strings nos respetivos ficheiros *.json
-                File.WriteAllText(artistaPath, artistaJSON);
-                File.WriteAllText(albumPath, albumJSON);
-                File.WriteAllText(musicaPath, musicaJSON);
+                //// Serializa o objeto para JSON e guarda-o numa string 
+                //artistaJSON = javaScriptSerializer.Serialize(artistas);
+                //albumJSON = javaScriptSerializer.Serialize(albuns);
+                //musicaJSON = javaScriptSerializer.Serialize(musicas);
+                //// Escreve o texto nas strings nos respetivos ficheiros *.json
+                //File.WriteAllText(artistaPath, artistaJSON);
+                //File.WriteAllText(albumPath, albumJSON);
+                //File.WriteAllText(musicaPath, musicaJSON);
 
                 #endregion
 
@@ -135,7 +121,7 @@ namespace Main
                         Artistas novoArtista = new Artistas(tipoArtista, nomeArtista, codigoArtista, DateTime.Now, duracao);
 
                         // Regista o novo artista
-                        Console.WriteLine(Artistas.RegistarArtista(artistas, novoArtista) ? "O artista {0} foi criado" : "O artista {0} não foi criado", nomeArtista);
+                        Console.WriteLine(Artistas.RegistarArtista(novoArtista) ? "O artista {0} foi criado" : "O artista {0} não foi criado", nomeArtista);
                     }
                     #endregion
 
