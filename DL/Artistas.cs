@@ -9,7 +9,7 @@ namespace DL
 {
     public class Artistas
     {
-        #region Estado
+        #region Objetos
         public static List<Artista> lst_artistas = new List<Artista>();
         #endregion
 
