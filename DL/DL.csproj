@@ -52,7 +52,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data\BO.csproj">
+    <ProjectReference Include="..\BO\BO.csproj">
       <Project>{e29107f8-87f5-4cdb-b4cf-0fde4fec169b}</Project>
       <Name>BO</Name>
     </ProjectReference>
