@@ -4,7 +4,7 @@
 ///  <version> 1.0 </version>
 ///  <email> a17005@alunos.ipca.pt </email>
 ///  <email> a17023@alunos.ipca.pt </email>
-///  <desc></desc>
+///  Camada de interação
 
 
 using System;

@@ -1,8 +1,13 @@
-﻿using System;
+﻿///  <author> Rui Costa</author>
+///  <author> Helder Sá</author>
+///  <date> xx/xx/2020 </date>
+///  <version> 1.0 </version>
+///  <email> a17005@alunos.ipca.pt </email>
+///  <email> a17023@alunos.ipca.pt </email>
+///  Definição da Classe artista
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BO
 {
