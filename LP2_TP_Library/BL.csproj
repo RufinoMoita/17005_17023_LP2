@@ -41,13 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Albuns.cs" />
     <Compile Include="Artistas.cs" />
+    <Compile Include="Musicas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\BO.csproj">
       <Project>{e29107f8-87f5-4cdb-b4cf-0fde4fec169b}</Project>
       <Name>BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DL\DL.csproj">
+      <Project>{b49f3a48-0f29-4574-96d6-a006dabc89f1}</Project>
+      <Name>DL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
