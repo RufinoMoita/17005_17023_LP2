@@ -1,2 +1,0 @@
-C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BLayer\obj\Debug\BLayer.csprojAssemblyReference.cache
-C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BLayer\obj\Debug\BLayer.csproj.CoreCompileInputs.cache
