@@ -105,7 +105,7 @@ namespace DL
         /// <param name="albuns"></param>
         /// <param name="titulo"></param>
         /// <returns></returns>
-        public static bool AtribuirAlbum(string nomeArtista, string titulo)
+        public static bool AtribuirAlbum(string nomeArtista, string titulo, List<Album> albuns)
         {
             int artistaIndex = ObterArtistaIndex(nomeArtista);
             if (artistaIndex != -1)
@@ -117,15 +117,13 @@ namespace DL
                     if (albumIndex != -1)
                     {
                         //Adicionar o album ao artista
-                        artistas[artistaIndex].albuns.Add(albuns[albumIndex]);
+                        lst_artistas[artistaIndex].A.Add(albuns[albumIndex]);
                         return true;
                     }
                 }
             }
             return false;
-        } //resolver o adicionar o album ao artista pq ao mudar a função Existe album deixou de ser possivel verificar se
-        //já existia determinada musica em determinado album
-
+        }
         #endregion
     }
 }
