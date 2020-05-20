@@ -56,7 +56,7 @@ namespace BL
         public static void AssociarMusicaBO(string nomeAlbum, string nomeMusica)
         {
             //Atribuir uma musica a um artista
-            DL.Albuns.AtribuirMusica(nomeAlbum, nomeMusica, DL.Musicas.lst_musicas);
+            DL.Albuns.AtribuirMusica(nomeAlbum, nomeMusica, DL.Musicas.lstMusicas);
         }
 
         /// <summary>
@@ -67,11 +67,11 @@ namespace BL
         {
             AlbumBO min = new AlbumBO();
             min.UnidadesVendidas = 99999;
-            for (int i = 0; i < DL.Albuns.lst_albuns.Count; i++)
+            for (int i = 0; i < DL.Albuns.lstAlbuns.Count; i++)
             { 
-                if (DL.Albuns.lst_albuns[i].UnidadesVendidas < min.UnidadesVendidas)
+                if (DL.Albuns.lstAlbuns[i].UnidadesVendidas < min.UnidadesVendidas)
                 {
-                    min = DL.Albuns.lst_albuns[i];
+                    min = DL.Albuns.lstAlbuns[i];
                 }
             }
             return min;  
@@ -85,11 +85,11 @@ namespace BL
         {
             AlbumBO max = new AlbumBO();
             max.UnidadesVendidas = 0;
-            for (int i = 0; i < DL.Albuns.lst_albuns.Count; i++)
+            for (int i = 0; i < DL.Albuns.lstAlbuns.Count; i++)
             {
-                if (DL.Albuns.lst_albuns[i].UnidadesVendidas > max.UnidadesVendidas)
+                if (DL.Albuns.lstAlbuns[i].UnidadesVendidas > max.UnidadesVendidas)
                 {
-                    max = DL.Albuns.lst_albuns[i];
+                    max = DL.Albuns.lstAlbuns[i];
                 }
             }
             return max;
@@ -100,8 +100,8 @@ namespace BL
         /// </summary>
         public static void MostraAlbunsDisponiveis()
         {
-            for (int i = 0; i < DL.Albuns.lst_albuns.Count; i++)
-                Console.WriteLine(DL.Albuns.lst_albuns[i].ToString());
+            for (int i = 0; i < DL.Albuns.lstAlbuns.Count; i++)
+                Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
         }
     }
 }

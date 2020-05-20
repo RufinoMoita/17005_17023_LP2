@@ -13,7 +13,7 @@ namespace DL
     public class Musicas
     {
         #region Objetos
-        public static List<MusicaBO> lst_musicas = new List<MusicaBO>();
+        public static List<MusicaBO> lstMusicas = new List<MusicaBO>();
         #endregion
 
         #region Métodos
@@ -25,10 +25,10 @@ namespace DL
         /// <returns></returns>
         public static int ObterMusicaIndex(string nome)
         {
-            for (int i = 0; i < lst_musicas.Count; i++)
+            for (int i = 0; i < lstMusicas.Count; i++)
             {
                 //Se encontrar a musica
-                if (lst_musicas[i].Nome == nome)
+                if (lstMusicas[i].Nome == nome)
                     //retorna a sua posição
                     return i;
             }
@@ -48,7 +48,7 @@ namespace DL
             if (index != -1)
             {
                 //Se o titulo da musica de indice index corresponder a titulo
-                if (lst_musicas[index].Nome == nome)
+                if (lstMusicas[index].Nome == nome)
                     //Retorna true pois existe
                     return true;
             }
@@ -68,7 +68,7 @@ namespace DL
             if (ExisteMusica(novaMusica.Nome) == false)
             {
                 //Adicionar uma nova musica
-                lst_musicas.Add(novaMusica);
+                lstMusicas.Add(novaMusica);
                 return true;
             }
             //Caso já exista uma musica com o nome lido retorna false
@@ -88,10 +88,10 @@ namespace DL
                 if (index != -1)
                 {
                     //Se encontrar uma musica com o titulo lido
-                    if (lst_musicas[index].Nome == nome)
+                    if (lstMusicas[index].Nome == nome)
                     {
                         //Remover a musica de indice index
-                        lst_musicas.RemoveAt(index);
+                        lstMusicas.RemoveAt(index);
                         //Retorna verdadeiro pq a musica foi removida
                         return true;
                     }

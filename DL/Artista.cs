@@ -14,7 +14,7 @@ namespace DL
     public class Artistas
     {
         #region Objetos
-        public static List<ArtistaBO> lst_artistas = new List<ArtistaBO>();
+        public static List<ArtistaBO> lstArtistas = new List<ArtistaBO>();
         #endregion
 
         #region Métodos
@@ -26,9 +26,9 @@ namespace DL
         /// <returns></returns>
         public static int ObterArtistaIndex(string nomeArtista)
         {
-            for (int i = 0; i < lst_artistas.Count; i++)
+            for (int i = 0; i < lstArtistas.Count; i++)
             {
-                if (lst_artistas[i].NomeArtista == nomeArtista)
+                if (lstArtistas[i].NomeArtista == nomeArtista)
                     return i;
             }
             return -1;
@@ -47,7 +47,7 @@ namespace DL
             if (index != -1)
             {
                 //Se o codigo de artista existir na posição de incide "index"
-                if (lst_artistas[index].NomeArtista == nomeArtista)
+                if (lstArtistas[index].NomeArtista == nomeArtista)
                     return true;  //retorna true pq o artista foi encontrado
             }
             //Caso não encontre retorna false
@@ -66,7 +66,7 @@ namespace DL
             if (ExisteArtista(novoArtista.NomeArtista) == false)
             {
                 //Adiciona um novo artista
-                lst_artistas.Add(novoArtista);
+                lstArtistas.Add(novoArtista);
                 return true;
             }
 
@@ -86,10 +86,10 @@ namespace DL
             if (index != -1)
             {
                 //Caso o artista exista
-                if (lst_artistas[index].NomeArtista == nomeArtista)
+                if (lstArtistas[index].NomeArtista == nomeArtista)
                 {
                     //Remove o utilizador do indice "index"
-                    lst_artistas.RemoveAt(index);
+                    lstArtistas.RemoveAt(index);
                     //Retorna true pois foi eliminado
                     return true;
                 }
@@ -118,7 +118,7 @@ namespace DL
                     if (albumIndex != -1)
                     {
                         //Adicionar o album ao artista
-                        lst_artistas[artistaIndex].A.Add(albuns[albumIndex]);
+                        lstArtistas[artistaIndex].A.Add(albuns[albumIndex]);
                         return true;
                     }
                 }
