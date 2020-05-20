@@ -1,1 +1,14 @@
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.csproj.CoreCompileInputs.cache
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\Principal.exe.config
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\Principal.exe
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\Principal.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\BL.dll
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\BO.dll
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\DL.dll
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\BL.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\BO.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\bin\Debug\DL.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.csprojAssemblyReference.cache
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.csproj.CopyComplete
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.exe
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.pdb

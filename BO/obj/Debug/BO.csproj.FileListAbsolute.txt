@@ -1,0 +1,6 @@
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\bin\Debug\BO.dll
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\bin\Debug\BO.pdb
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\obj\Debug\BO.csprojAssemblyReference.cache
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\obj\Debug\BO.dll
+C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\obj\Debug\BO.pdb
