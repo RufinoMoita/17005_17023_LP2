@@ -20,7 +20,7 @@ namespace BL
         /// <returns></returns>
         public static int TotalArtistas()
         {
-            return DL.Artistas.lst_artistas.Count;
+            return DL.Artistas.lstArtistas.Count;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace BL
         public static void AtribuirAlbum(string nomeArtista, string nomeAlbum)
         {
             //Atribuir o album ao artista
-            DL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum, DL.Albuns.lst_albuns);
+            DL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum, DL.Albuns.lstAlbuns);
         }
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace BL
         {
             Console.Clear();
             Console.WriteLine("--Listagem de Artistas--\n\n");
-            for (int i = 0; i < DL.Artistas.lst_artistas.Count; i++)
-                Console.WriteLine("[{0}] {1}", i, DL.Artistas.lst_artistas[i].ToString());
+            for (int i = 0; i < DL.Artistas.lstArtistas.Count; i++)
+                Console.WriteLine("[{0}] {1}", i, DL.Artistas.lstArtistas[i].ToString());
             Console.ReadKey();
         }
     }

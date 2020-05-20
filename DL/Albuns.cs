@@ -14,7 +14,7 @@ namespace DL
     public class Albuns
     {
         #region Objetos
-        public static List<AlbumBO> lst_albuns = new List<AlbumBO>();
+        public static List<AlbumBO> lstAlbuns = new List<AlbumBO>();
         #endregion
 
         #region Métodos
@@ -26,10 +26,10 @@ namespace DL
         /// <returns></returns>
         public static int ObterAlbumIndex(string titulo)
         {
-            for (int i = 0; i < lst_albuns.Count; i++)
+            for (int i = 0; i < lstAlbuns.Count; i++)
             {
                 //Se encontrar o album
-                if (lst_albuns[i].Titulo == titulo)
+                if (lstAlbuns[i].Titulo == titulo)
                     //retorna a sua posição
                     return i;
             }
@@ -49,7 +49,7 @@ namespace DL
             if (index != -1)
             {
                 //Se o titulo do album de indice index corresponder a titulo
-                if (lst_albuns[index].Titulo == titulo)
+                if (lstAlbuns[index].Titulo == titulo)
                     //Retorna true pois existe
                     return true;
             }
@@ -69,7 +69,7 @@ namespace DL
             if (ExisteAlbum(novoAlbum.Titulo) == false)
             {
                 //Adicionar um novo album
-                lst_albuns.Add(novoAlbum);
+                lstAlbuns.Add(novoAlbum);
                 return true;
             }
             //Caso já exista um album com o nome lido retorna false
@@ -88,10 +88,10 @@ namespace DL
             if (index != -1)
             {
                 //Se encontrar um album com o titulo lido
-                if (lst_albuns[index].Titulo == titulo)
+                if (lstAlbuns[index].Titulo == titulo)
                 {
                     //Remover o album de indice index
-                    lst_albuns.RemoveAt(index);
+                    lstAlbuns.RemoveAt(index);
                     //Retorna verdadeiro pq o album foi removido
                     return true;
                 }
@@ -123,7 +123,7 @@ namespace DL
                     if (musicaIndex != -1)
                     {
                         //Adicionar a musica ao album
-                        lst_albuns[albumIndex].M.Add(musicas[musicaIndex]);
+                        lstAlbuns[albumIndex].M.Add(musicas[musicaIndex]);
                         return true;
                     }
                 }

@@ -8,6 +8,7 @@
 using BO;
 using DL;
 using System;
+
 namespace BL
 {
     public class Musicas
@@ -18,7 +19,7 @@ namespace BL
         /// <returns></returns>
         public static int TotalMusicas()
         {
-            return DL.Musicas.lst_musicas.Count;
+            return DL.Musicas.lstMusicas.Count;
         }
 
         /// <summary>
@@ -54,8 +55,8 @@ namespace BL
         /// </summary>
         public static void MostraMusicasDisponiveis()
         {
-            for (int i = 0; i < DL.Musicas.lst_musicas.Count; i++)
-                Console.WriteLine(DL.Musicas.lst_musicas[i].ToString());
+            for (int i = 0; i < DL.Musicas.lstMusicas.Count; i++)
+                Console.WriteLine(DL.Musicas.lstMusicas[i].ToString());
         }
 
     }
