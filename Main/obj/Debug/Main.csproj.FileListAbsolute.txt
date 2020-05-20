@@ -8,3 +8,7 @@ C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.csproj.CopyComplete
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.exe
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Main\obj\Debug\Main.pdb
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Main\obj\Debug\Main.csprojAssemblyReference.cache
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Main\obj\Debug\Main.exe
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Main\obj\Debug\Main.pdb

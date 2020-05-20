@@ -108,7 +108,7 @@ namespace DL
         /// <param name="musicas"></param>
         /// <param name="nome"></param>
         /// <returns></returns>
-        public static bool AtribuirMusica(string titulo, string nome)
+        public static bool AtribuirMusica(string titulo, string nome, List<Musica>musicas)
         {
             int albumIndex = ObterAlbumIndex(titulo);
             //Se o album existir
@@ -122,7 +122,7 @@ namespace DL
                     if (musicaIndex != -1)
                     {
                         //Adicionar a musica ao album
-                        lst_albuns[albumIndex].M.Add(musicaIndex);
+                        lst_albuns[albumIndex].M.Add(musicas[musicaIndex]);
                         return true;
                     }
                 }
