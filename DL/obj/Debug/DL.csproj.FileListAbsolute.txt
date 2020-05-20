@@ -1,0 +1,2 @@
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\DL\obj\Debug\DL.csprojAssemblyReference.cache
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\DL\obj\Debug\DL.csproj.CoreCompileInputs.cache
