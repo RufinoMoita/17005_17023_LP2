@@ -9,7 +9,7 @@
 
 using System;
 using System.Collections.Generic;
-using BO;
+using BL;
 using System.Web.Script.Serialization;
 using System.IO;
 
@@ -53,7 +53,7 @@ namespace Main
 
             //    // Importa os dados para o objecto
             //    artistas = javaScriptSerializer.Deserialize<List<Artista>>(artistaJSON);
-            //    albuns = javaScriptSerializer.Deserialize<List<Album>>(albumJSON);
+            //    albuns = javaScriptSerializer.Deserialize<List<AlbumBO>>(albumJSON);
             //    musicas = javaScriptSerializer.Deserialize<List<Musica>>(musicaJSON);
             //}
             #endregion
@@ -62,7 +62,7 @@ namespace Main
             while (voltar != false)
             {
                 #region Gravar JSON
-                //// Serializa o objeto para JSON e guarda-o numa string 
+                /// Serializa o objeto para JSON e guarda-o numa string 
                 //artistaJSON = javaScriptSerializer.Serialize(artistas);
                 //albumJSON = javaScriptSerializer.Serialize(albuns);
                 //musicaJSON = javaScriptSerializer.Serialize(musicas);
@@ -91,7 +91,7 @@ namespace Main
                     Console.WriteLine("[1] Adicionar Artista");
                     Console.WriteLine("[2] Eliminar Artista");
                     Console.WriteLine("[3] Listar Artistas");
-                    Console.WriteLine("[4] Atribuir Album");
+                    Console.WriteLine("[4] Atribuir AlbumBO");
                     Console.WriteLine("[0] Voltar");
                     opcao = char.Parse(Console.ReadLine());
                     Console.Clear();
@@ -116,12 +116,7 @@ namespace Main
 
                         // Limpa a Consola
                         Console.Clear();
-
-                        // Criar um novo artista
-                        Artistas novoArtista = new Artistas(tipoArtista, nomeArtista, codigoArtista, DateTime.Now, duracao);
-
-                        // Regista o novo artista
-                        Console.WriteLine(Artistas.RegistarArtista(novoArtista) ? "O artista {0} foi criado" : "O artista {0} não foi criado", nomeArtista);
+                        BL.Artistas.AdicionarArtista(tipoArtista, nomeArtista, codigoArtista, DateTime.Now, duracao);
                     }
                     #endregion
 
@@ -130,18 +125,14 @@ namespace Main
                     {
                         Console.WriteLine("--Remover Artista--\n\n");
                         Console.Write("\nNome: "); nomeArtista = Console.ReadLine();
-                        Console.WriteLine(Artistas.RemoverArtista(artistas, nomeArtista) ? "{0} foi eliminado" : "Não foi possível eliminar {0}", nomeArtista);
+                        BL.Artistas.RemoverArtista(nomeArtista);
                     }
                     #endregion
 
                     #region Listar Artistas
                     else if (opcao == '3') // Listar Artistas
                     {
-                        Console.Clear();
-                        Console.WriteLine("--Listagem de Artistas--\n\n");
-                        for (int i = 0; i < artistas.Count; i++)
-                            Console.WriteLine("[{0}] {1}", i, artistas[i].ToString());
-                        Console.ReadKey();
+                        BL.Artistas.ListarArtistas();
                     }
                     #endregion
 
@@ -151,135 +142,121 @@ namespace Main
                         Console.Clear();
                         Console.WriteLine("--Atribuir album a artista--\n\n");
                         Console.WriteLine("========= Albuns Disponíveis =========");
-                        for (int i = 0; i < albuns.Count; i++)
-                            Console.WriteLine(albuns[i].ToString());
+                        BL.Albuns.MostraAlbunsDisponiveis();
                         Console.Write("\n\nNome do artista: "); nomeArtista = Console.ReadLine();
                         Console.Write("\nNome do album: "); nomeAlbum = Console.ReadLine();
                         Console.Clear();
-                        Console.WriteLine(Artistas.AtribuirAlbum(artistas, nomeArtista, albuns, nomeAlbum) ? "{0} atribuído a {1}" : "Não foi possível atribuir o album {0} ao artista {1}", nomeAlbum, nomeArtista);
+                        BL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum);
                     }
-                    #endregion
-                }
+                        #endregion
+                 }
                 #endregion
 
-                #region Albuns
-                else if (opcao == '2') //Gestão dos albuns
-                {
-                    #region Menu
-                    Console.Clear();
-                    Console.WriteLine("========= GERIR ALBUNS =========");
-                    Console.WriteLine("[1] Adicionar Album");
-                    Console.WriteLine("[2] Eliminar Album");
-                    Console.WriteLine("[3] Listar Albuns");
-                    Console.WriteLine("[4] Atribuir Musica");
-                    opcao = char.Parse(Console.ReadLine());
-                    Console.Clear();
-                    #endregion
-
-                    #region Adicionar Album
-                    if (opcao == '1') // Adicionar Album
+                    #region Albuns
+                    else if (opcao == '2') //Gestão dos albuns
                     {
-                        //Incrementar o código do album
-                        codigoAlbum++;
-
-                        Console.WriteLine("--Adicionar Album--\n\n");
-
-                        // Pede o titulo do album
-                        Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
-
-                        // Pede o estilo do album
-                        Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
-
-                        //Pede o ano de lançamento
-                        Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
-
-                        //Pede o número de unidades vendidas
-                        Console.Write("\nNúmero de unidades vendidas: "); unidadesVendidas = int.Parse(Console.ReadLine());
-
-                        // Limpa a Consola
+                        #region Menu
                         Console.Clear();
+                        Console.WriteLine("========= GERIR ALBUNS =========");
+                        Console.WriteLine("[1] Adicionar AlbumBO");
+                        Console.WriteLine("[2] Eliminar AlbumBO");
+                        Console.WriteLine("[3] Listar Albuns");
+                        Console.WriteLine("[4] Atribuir Musica");
+                        opcao = char.Parse(Console.ReadLine());
+                        Console.Clear();
+                        #endregion
 
-                        // Criar um novo album
-                        Albuns novoAlbum = new Albuns(codigoAlbum, nomeAlbum, ano, estilo, unidadesVendidas);
+                        #region Adicionar Album
+                        if (opcao == '1') // Adicionar AlbumBO
+                        {
+                            //Incrementar o código do album
+                            codigoAlbum++;
 
-                        // Regista o novo album
-                        Console.WriteLine(Albuns.RegistarAlbum(albuns, novoAlbum) ? "O album {0} foi criado" : "O album {0} não foi criado", nomeAlbum);
+                            Console.WriteLine("--Adicionar AlbumBO--\n\n");
+
+                            // Pede o titulo do album
+                            Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
+
+                            // Pede o estilo do album
+                            Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
+
+                            //Pede o ano de lançamento
+                            Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
+
+                            //Pede o número de unidades vendidas
+                            Console.Write("\nNúmero de unidades vendidas: "); unidadesVendidas = int.Parse(Console.ReadLine());
+
+                            // Limpa a Consola
+                            Console.Clear();
+
+                            // Regista o novo album
+                            BL.Albuns.AdicionarAlbumBO(codigoAlbum, nomeAlbum, ano, estilo, unidadesVendidas);
+                        }
+                        #endregion
+
+                        #region Remover Album
+                        if (opcao == '2') // Remover album
+                        {
+                            Console.WriteLine("\n--Remover AlbumBO--\n\n");
+                            Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
+                            BL.Albuns.RemoverAlbumBO(nomeAlbum);
+                        }
+                        #endregion
+
+                        #region Listar Albuns
+                        if (opcao == '3') // Listar Albuns
+                        {
+                            BL.Albuns.MostraAlbunsDisponiveis();
+                        }
+                        #endregion
+
+                        #region Atribuir uma musica a um album
+                        if (opcao == '4') // Atribuir uma musica a um album
+                        {
+                            Console.Clear();
+                            Console.WriteLine("--Atribuir musica a album--\n\n");
+                            Console.WriteLine("========= Musicas Disponíveis =========");
+                            BL.Musicas.MostraMusicasDisponiveis();
+                            Console.Write("\n\nNome do AlbumBO: "); nomeAlbum = Console.ReadLine();
+                            Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
+                            Console.Clear();
+                            BL.Albuns.AssociarMusicaBO(nomeAlbum, nomeMusica);
+                        }
+                        #endregion
                     }
                     #endregion
 
-                    #region Remover Album
-                    if (opcao == '2') // Remover album
+                    #region Musicas
+                    else if (opcao == '3') //Gestão das musicas
                     {
-                        Console.WriteLine("\n--Remover Album--\n\n");
-                        Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
-                        Console.WriteLine(Albuns.RemoverAlbum(albuns, nomeAlbum) ? "{0} foi eliminado" : "Não foi possível eliminar {0}", nomeAlbum);
-                    }
-                    #endregion
-
-                    #region Listar Albuns
-                    if (opcao == '3') // Listar Albuns
-                    {
+                        #region Menu
                         Console.Clear();
-                        Console.WriteLine("--Listagem de Albuns--\n\n");
-                        for (int i = 0; i < albuns.Count; i++)
-                            Console.WriteLine("[{0}] {1}", i, albuns[i].ToString());
-
-
-                        Console.ReadKey();
-                    }
-                    #endregion
-
-                    #region Atribuir uma musica a um album
-                    if (opcao == '4') // Atribuir uma musica a um album
-                    {
+                        Console.WriteLine("========= GERIR MUSICAS =========");
+                        Console.WriteLine("[1] Adicionar Musica");
+                        Console.WriteLine("[2] Eliminar Musica");
+                        Console.WriteLine("[3] Listar Musicas");
+                        opcao = char.Parse(Console.ReadLine());
                         Console.Clear();
-                        Console.WriteLine("--Atribuir musica a album--\n\n");
-                        Console.WriteLine("========= Musicas Disponíveis =========");
-                        for (int i = 0; i < musicas.Count; i++)
-                            Console.WriteLine(musicas[i].ToString());
-                        Console.Write("\n\nNome do Album: "); nomeAlbum = Console.ReadLine();
-                        Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
-                        Console.Clear();
-                        Console.WriteLine(Albuns.AtribuirMusica(albuns, nomeAlbum, musicas, nomeMusica) ? "{0} atribuída a {1}" : "Não foi possível atribuir a musica {0} ao album {1}", nomeMusica, nomeAlbum);
-                    }
-                    #endregion
-                }
-                #endregion
+                        #endregion
 
-                #region Musicas
-                else if (opcao == '3') //Gestão das musicas
-                {
-                    #region Menu
-                    Console.Clear();
-                    Console.WriteLine("========= GERIR MUSICAS =========");
-                    Console.WriteLine("[1] Adicionar Musica");
-                    Console.WriteLine("[2] Eliminar Musica");
-                    Console.WriteLine("[3] Listar Musicas");
-                    opcao = char.Parse(Console.ReadLine());
-                    Console.Clear();
-                    #endregion
+                        #region Adicionar Musica
+                        if (opcao == '1') // Adicionar Musica
+                        {
+                            //Incrementar o código da musica
 
-                    #region Adicionar Musica
-                    if (opcao == '1') // Adicionar Musica
-                    {
-                        //Incrementar o código da musica
+                            codigoMusica++;
 
-                        codigoMusica++;
+                            Console.WriteLine("--Adicionar Musica--\n\n");
 
-                        Console.WriteLine("--Adicionar Musica--\n\n");
+                            // Pede o titulo da musica
+                            Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
 
-                        // Pede o titulo da musica
-                        Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
+                            // Limpa a Consola
+                            Console.Clear();
 
-                        // Limpa a Consola
-                        Console.Clear();
-
-                        // Criar uma nova musica
-                        Musicas novaMusica = new Musicas(nomeMusica, codigoMusica);
-
-                        // Regista a nova musica
-                        Console.WriteLine(Musicas.RegistarMusica(musicas, novaMusica) ? "A musica {0} foi criada" : "A musica {0} não foi criada", nomeMusica);
-                    }
+                            // Regista a nova musica
+                            BL.Musicas.AdicionarMusica(nomeMusica, codigoMusica);
+                        }
                     #endregion
 
                     #region Remover Musica
@@ -287,39 +264,37 @@ namespace Main
                     {
                         Console.WriteLine("\n--Remover Musica--\n\n");
                         Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
-                        Console.WriteLine(Musicas.RemoverMusica(musicas, nomeMusica) ? "{0} foi eliminada" : "Não foi possível eliminar {0}", nomeMusica
-);
+                        BL.Musicas.RemoverMusica(nomeMusica);
+                     }
+                        #endregion
+
+                        #region Listar Musicas
+                        if (opcao == '3') // Listar Musicas
+                        {
+                            Console.Clear();
+                            Console.WriteLine("--Listagem de Musicas--\n\n");
+                            BL.Musicas.MostraMusicasDisponiveis();
+                            Console.ReadKey();
+                        }
+                        #endregion
                     }
                     #endregion
 
-                    #region Listar Musicas
-                    if (opcao == '3') // Listar Musicas
+                    #region Default
+                    //Sair
+                    else if (opcao == '0')
                     {
-                        Console.Clear();
-                        Console.WriteLine("--Listagem de Musicas--\n\n");
-                        for (int i = 0; i < musicas.Count; i++)
-                            Console.WriteLine("[{0}] {1}", i, musicas[i].ToString());
-                        Console.ReadKey();
+                        Environment.Exit(0);
+                    }
+
+                    //Opção Inválida
+                    else
+                    {
+                        Console.Clear(); Console.WriteLine("Opção Inválida! ");
                     }
                     #endregion
-                }
-                #endregion
-
-                #region Default
-                //Sair
-                else if (opcao == '0')
-                {
-                    Environment.Exit(0);
-                }
-
-                //Opção Inválida
-                else
-                {
-                    Console.Clear(); Console.WriteLine("Opção Inválida! ");
-                }
-                #endregion
+             #endregion
             }
-            #endregion
         }
     }
 }

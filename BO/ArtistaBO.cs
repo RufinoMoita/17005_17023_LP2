@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace BO
 {
-    public class Artista
+    public class ArtistaBO
     {
         #region Estado
         string tipo;
@@ -19,14 +19,14 @@ namespace BO
         int codigoArtista;
         DateTime data;
         int duracao;
-        List<Album> albuns = new List<Album>();
+        List<AlbumBO> albuns = new List<AlbumBO>();
         #endregion
 
         #region Construtores
         /// <summary>
         /// Construtor por omissão
         /// </summary>
-        public Artista()
+        public ArtistaBO()
         {
 
         }
@@ -42,7 +42,7 @@ namespace BO
         /// <param name="ano"></param>
         /// <param name="duracao"></param>
         /// <param name="fimContrato"></param>
-        public Artista(string tipo, string nomeArtista, int codigoArtista, DateTime data, int duracao)
+        public ArtistaBO(string tipo, string nomeArtista, int codigoArtista, DateTime data, int duracao)
         {
             this.tipo = tipo;
             this.nomeArtista = nomeArtista;
@@ -102,7 +102,7 @@ namespace BO
         /// <summary>
         /// Obtém e define a lista de albuns
         /// </summary>
-        public List<Album> A
+        public List<AlbumBO> A
         {
             get { return albuns; }
             set { albuns = value; }
@@ -120,13 +120,6 @@ namespace BO
         {
             string output = string.Format("\nNome: {0}\nTipo: {1}\nCódigo: {2}\nInício do contrato:{3}\n",
                 nomeArtista, tipo, codigoArtista, data);
-
-            //Percorrer todos os albuns do artista
-            for (int i = 0; i < albuns.Count; i++)
-            {
-                output = output + string.Format("{0}", albuns[i].ToString());
-            }
-
             return output;
         }
 

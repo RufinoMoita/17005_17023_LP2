@@ -13,7 +13,7 @@ namespace DL
     public class Musicas
     {
         #region Objetos
-        public static List<Musica> lst_musicas = new List<Musica>();
+        public static List<MusicaBO> lst_musicas = new List<MusicaBO>();
         #endregion
 
         #region Métodos
@@ -62,7 +62,7 @@ namespace DL
         /// <param name="musicas"></param>
         /// <param name="novaMusica"></param>
         /// <returns></returns>
-        public static bool RegistarMusica(Musica novaMusica)
+        public static bool RegistarMusica(MusicaBO novaMusica)
         {
             //Se não existir nenhuma musica com o mesmo nome
             if (ExisteMusica(novaMusica.Nome) == false)

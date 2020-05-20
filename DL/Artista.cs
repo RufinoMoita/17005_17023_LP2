@@ -7,13 +7,14 @@
 ///  Definição da classe artistas
 using System.Collections.Generic;
 using BO;
+using System;
 
 namespace DL
 {
     public class Artistas
     {
         #region Objetos
-        public static List<Artista> lst_artistas = new List<Artista>();
+        public static List<ArtistaBO> lst_artistas = new List<ArtistaBO>();
         #endregion
 
         #region Métodos
@@ -25,7 +26,7 @@ namespace DL
         /// <returns></returns>
         public static int ObterArtistaIndex(string nomeArtista)
         {
-            for (int i = 0; i < lst_artistas.Count ; i++)
+            for (int i = 0; i < lst_artistas.Count; i++)
             {
                 if (lst_artistas[i].NomeArtista == nomeArtista)
                     return i;
@@ -59,7 +60,7 @@ namespace DL
         /// <param name="artistas"></param>
         /// <param name="novoArtista"></param>
         /// <returns></returns>
-        public static bool RegistarArtista(Artista novoArtista)
+        public static bool RegistarArtista(ArtistaBO novoArtista)
         {
             //Se não existir nenhum artista com o mesmo codigo do artista a registar
             if (ExisteArtista(novoArtista.NomeArtista) == false)
@@ -79,7 +80,7 @@ namespace DL
         /// <param name="artistas"></param>
         /// <param name="nomeArtista"></param>
         /// <returns></returns>
-        public static bool RemoverArtista(List<Artistas> artistas, string nomeArtista)
+        public static bool RemoverArtista(string nomeArtista)
         {
             int index = ObterArtistaIndex(nomeArtista);
             if (index != -1)
@@ -88,7 +89,7 @@ namespace DL
                 if (lst_artistas[index].NomeArtista == nomeArtista)
                 {
                     //Remove o utilizador do indice "index"
-                    artistas.RemoveAt(index);
+                    lst_artistas.RemoveAt(index);
                     //Retorna true pois foi eliminado
                     return true;
                 }
@@ -105,7 +106,7 @@ namespace DL
         /// <param name="albuns"></param>
         /// <param name="titulo"></param>
         /// <returns></returns>
-        public static bool AtribuirAlbum(string nomeArtista, string titulo, List<Album> albuns)
+        public static bool AtribuirAlbum(string nomeArtista, string titulo, List<AlbumBO> albuns)
         {
             int artistaIndex = ObterArtistaIndex(nomeArtista);
             if (artistaIndex != -1)

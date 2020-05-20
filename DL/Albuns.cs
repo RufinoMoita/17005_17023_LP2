@@ -7,13 +7,14 @@
 ///  Definição da classe albuns
 using System.Collections.Generic;
 using BO;
+using System;
 
 namespace DL
 {
     public class Albuns
     {
         #region Objetos
-        public static List<Album> lst_albuns = new List<Album>();
+        public static List<AlbumBO> lst_albuns = new List<AlbumBO>();
         #endregion
 
         #region Métodos
@@ -62,7 +63,7 @@ namespace DL
         /// <param name="albuns"></param>
         /// <param name="novoAlbum"></param>
         /// <returns></returns>
-        public static bool RegistarAlbum(Album novoAlbum)
+        public static bool RegistarAlbum(AlbumBO novoAlbum)
         {
             //Se não existir nenhum album com o mesmo titulo
             if (ExisteAlbum(novoAlbum.Titulo) == false)
@@ -108,7 +109,7 @@ namespace DL
         /// <param name="musicas"></param>
         /// <param name="nome"></param>
         /// <returns></returns>
-        public static bool AtribuirMusica(string titulo, string nome, List<Musica>musicas)
+        public static bool AtribuirMusica(string titulo, string nome, List<MusicaBO>musicas)
         {
             int albumIndex = ObterAlbumIndex(titulo);
             //Se o album existir

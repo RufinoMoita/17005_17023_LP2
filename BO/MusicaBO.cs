@@ -8,7 +8,7 @@
 
 namespace BO
 {
-    public class Musica
+    public class MusicaBO
     {
         #region Estado
         string nome;
@@ -19,7 +19,7 @@ namespace BO
         /// <summary>
         /// Construtor por omissão
         /// </summary>
-        public Musica()
+        public MusicaBO()
         {
 
         }
@@ -29,7 +29,7 @@ namespace BO
         /// </summary>
         /// <param name="nome"></param>
         /// <param name="codigoMusica"></param>
-        public Musica(string nome, int codigoMusica)
+        public MusicaBO(string nome, int codigoMusica)
         {
             this.nome = nome;
             this.codigoMusica = codigoMusica;

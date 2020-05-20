@@ -4,7 +4,7 @@
 ///  <version> 1.0 </version>
 ///  <email> a17005@alunos.ipca.pt </email>
 ///  <email> a17023@alunos.ipca.pt </email>
-///  Definição da classe Album
+///  Definição da classe AlbumBO
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace BO
 {
-    public class Album
+    public class AlbumBO
     {
         #region Estado
 
@@ -21,7 +21,7 @@ namespace BO
         int ano;
         string estilo;
         int unidadesVendidas;
-        List<Musica> musicas = new List<Musica>();
+        List<MusicaBO> musicas = new List<MusicaBO>();
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace BO
         /// <summary>
         /// Construtor por omissão
         /// </summary>
-        public Album()
+        public AlbumBO()
         {
 
         }
@@ -44,7 +44,7 @@ namespace BO
         /// <param name="ano"></param>
         /// <param name="estilo"></param>
         /// <param name="unidadesVendidas"></param>
-        public Album(int codigoAlbum, string titulo, int ano, string estilo, int unidadesVendidas)
+        public AlbumBO(int codigoAlbum, string titulo, int ano, string estilo, int unidadesVendidas)
         {
             this.codigoAlbum = codigoAlbum;
             this.titulo = titulo;
@@ -105,7 +105,7 @@ namespace BO
         /// <summary>
         /// Obtém e define a lista de músicas
         /// </summary>
-        public List<Musica> M
+        public List<MusicaBO> M
         {
             get { return musicas; }
             set { value = musicas; }
