@@ -17,7 +17,7 @@ namespace Main
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
 
             #region Variaveis
