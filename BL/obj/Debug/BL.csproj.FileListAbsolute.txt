@@ -1,5 +1,0 @@
-D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\BL\obj\Debug\BL.csprojAssemblyReference.cache
-D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
-D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\BL\obj\Debug\LP2_TP_Library.dll
-D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\BL\obj\Debug\LP2_TP_Library.pdb
-C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache

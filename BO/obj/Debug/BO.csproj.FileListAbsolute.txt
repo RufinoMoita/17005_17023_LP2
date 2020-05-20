@@ -1,3 +1,0 @@
-D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\BO\obj\Debug\BO.csprojAssemblyReference.cache
-D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
-C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\BO\obj\Debug\BO.csproj.CoreCompileInputs.cache
