@@ -59,5 +59,51 @@ namespace BL
                 Console.WriteLine(DL.Musicas.lstMusicas[i].ToString());
         }
 
+        /// <summary>
+        /// Verifica se a musica existe e caso exista devolve a sua posição na lista
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static int ExisteMusica(string nome)
+        {
+            int existe;
+            existe = DL.Musicas.ObterMusicaIndex(nome);
+            if (existe == -1)
+                return 0;
+            else
+                return existe;
+        }
+
+        /// <summary>
+        /// Lista as musicas de determinado album
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static bool ListarMusicasPorAlbum(string nome)
+        {
+            int existe;
+            existe = DL.Albuns.ObterAlbumIndex(nome);
+            if (existe == -1)
+                return false;
+            else
+                DL.Albuns.lstAlbuns[existe].M.ToString();
+            return true;
+        }
+
+        /// <summary>
+        /// Edita uma determinada musica
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="nome"></param>
+        public static void EditarMusicaBO(int index, string nome)
+        {
+            int codigo;
+            //Guardar o código
+            codigo = DL.Musicas.lstMusicas[index].CodigoMusica;
+            //Remover a musica antiga
+            DL.Musicas.lstMusicas.RemoveAt(index);
+            //Adicionar uma nova musica com o mesmo código da antiga
+            AdicionarMusica(nome, codigo);
+        }
     }
 }

@@ -148,64 +148,65 @@ namespace Main
                         Console.Clear();
                         BL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum);
                     }
-                        #endregion
-                 }
+                    #endregion
+                }
                 #endregion
 
-                    #region Albuns
-                    else if (opcao == '2') //Gestão dos albuns
-                    {
-                        #region Menu
-                        Console.Clear();
-                        Console.WriteLine("========= GERIR ALBUNS =========");
-                        Console.WriteLine("[1] Adicionar AlbumBO");
-                        Console.WriteLine("[2] Eliminar AlbumBO");
-                        Console.WriteLine("[3] Editar AlbumBO");
-                        Console.WriteLine("[4] Listar Albuns");
-                        Console.WriteLine("[5] Listar Albuns por Estilo");
-                        Console.WriteLine("[6] Atribuir Musica");
-                        opcao = char.Parse(Console.ReadLine());
-                        Console.Clear();
-                        #endregion
-
-                        #region Adicionar Album
-                        if (opcao == '1') // Adicionar AlbumBO
-                        {
-                            //Incrementar o código do album
-                            codigoAlbum++;
-
-                            Console.WriteLine("--Adicionar AlbumBO--\n\n");
-
-                            // Pede o titulo do album
-                            Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
-
-                            // Pede o estilo do album
-                            Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
-
-                            //Pede o ano de lançamento
-                            Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
-
-                            //Pede o número de unidades vendidas
-                            Console.Write("\nNúmero de unidades vendidas: "); unidadesVendidas = int.Parse(Console.ReadLine());
-
-                            // Limpa a Consola
-                            Console.Clear();
-
-                            // Regista o novo album
-                            BL.Albuns.AdicionarAlbumBO(codigoAlbum, nomeAlbum, ano, estilo, unidadesVendidas);
-                        }
-                        #endregion
-
-                        #region Remover Album
-                        if (opcao == '2') // Remover album
-                        {
-                            Console.WriteLine("\n--Remover AlbumBO--\n\n");
-                            Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
-                            BL.Albuns.RemoverAlbumBO(nomeAlbum);
-                        }
+                #region Albuns
+                else if (opcao == '2') //Gestão dos albuns
+                {
+                    #region Menu
+                    Console.Clear();
+                    Console.WriteLine("========= GERIR ALBUNS =========");
+                    Console.WriteLine("[1] Adicionar AlbumBO");
+                    Console.WriteLine("[2] Eliminar AlbumBO");
+                    Console.WriteLine("[3] Editar AlbumBO");
+                    Console.WriteLine("[4] Listar Albuns");
+                    Console.WriteLine("[5] Listar Albuns por Estilo");
+                    Console.WriteLine("[6] Atribuir Musica");
+                    Console.WriteLine("[0] Voltar");
+                    opcao = char.Parse(Console.ReadLine());
+                    Console.Clear();
                     #endregion
 
-                        #region Editar Album
+                    #region Adicionar Album
+                    if (opcao == '1') // Adicionar AlbumBO
+                    {
+                        //Incrementar o código do album
+                        codigoAlbum++;
+
+                        Console.WriteLine("--Adicionar AlbumBO--\n\n");
+
+                        // Pede o titulo do album
+                        Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
+
+                        // Pede o estilo do album
+                        Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
+
+                        //Pede o ano de lançamento
+                        Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
+
+                        //Pede o número de unidades vendidas
+                        Console.Write("\nNúmero de unidades vendidas: "); unidadesVendidas = int.Parse(Console.ReadLine());
+
+                        // Limpa a Consola
+                        Console.Clear();
+
+                        // Regista o novo album
+                        BL.Albuns.AdicionarAlbumBO(codigoAlbum, nomeAlbum, ano, estilo, unidadesVendidas);
+                    }
+                    #endregion
+
+                    #region Remover Album
+                    if (opcao == '2') // Remover album
+                    {
+                        Console.WriteLine("\n--Remover AlbumBO--\n\n");
+                        Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
+                        BL.Albuns.RemoverAlbumBO(nomeAlbum);
+                    }
+                    #endregion
+
+                    #region Editar Album
                     if (opcao == '3')
                     {
                         // Pede o titulo do album
@@ -240,16 +241,16 @@ namespace Main
                             Console.ReadKey();
                         }
                     }
-                        #endregion
-
-                        #region Listar Albuns
-                    if (opcao == '4') // Listar Albuns
-                        {
-                            BL.Albuns.MostraAlbunsDisponiveis();
-                        }
                     #endregion
 
-                        #region Listar por Estilo
+                    #region Listar Albuns
+                    if (opcao == '4') // Listar Albuns
+                    {
+                        BL.Albuns.MostraAlbunsDisponiveis();
+                    }
+                    #endregion
+
+                    #region Listar por Estilo
                     if (opcao == '5')
                     {
                         bool albuns;
@@ -264,53 +265,56 @@ namespace Main
                     }
                     #endregion
 
-                        #region Atribuir uma musica a um album
+                    #region Atribuir uma musica a um album
                     if (opcao == '6') // Atribuir uma musica a um album
-                        {
-                            Console.Clear();
-                            Console.WriteLine("--Atribuir musica a album--\n\n");
-                            Console.WriteLine("========= Musicas Disponíveis =========");
-                            BL.Musicas.MostraMusicasDisponiveis();
-                            Console.Write("\n\nNome do AlbumBO: "); nomeAlbum = Console.ReadLine();
-                            Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
-                            Console.Clear();
-                            BL.Albuns.AssociarMusicaBO(nomeAlbum, nomeMusica);
-                        }
-                        #endregion
+                    {
+                        Console.Clear();
+                        Console.WriteLine("--Atribuir musica a album--\n\n");
+                        Console.WriteLine("========= Musicas Disponíveis =========");
+                        BL.Musicas.MostraMusicasDisponiveis();
+                        Console.Write("\n\nNome do AlbumBO: "); nomeAlbum = Console.ReadLine();
+                        Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
+                        Console.Clear();
+                        BL.Albuns.AssociarMusicaBO(nomeAlbum, nomeMusica);
                     }
                     #endregion
+                }
+                #endregion
 
-                    #region Musicas
-                    else if (opcao == '3') //Gestão das musicas
+                #region Musicas
+                else if (opcao == '3') //Gestão das musicas
+                {
+                    #region Menu
+                    Console.Clear();
+                    Console.WriteLine("========= GERIR MUSICAS =========");
+                    Console.WriteLine("[1] Adicionar Musica");
+                    Console.WriteLine("[2] Eliminar Musica");
+                    Console.WriteLine("[3] Editar Musica");
+                    Console.WriteLine("[4] Listar Musicas");
+                    Console.WriteLine("[5] Listar Musicas por Album");
+                    Console.WriteLine("[0] Voltar");
+                    opcao = char.Parse(Console.ReadLine());
+                    Console.Clear();
+                    #endregion
+
+                    #region Adicionar Musica
+                    if (opcao == '1') // Adicionar Musica
                     {
-                        #region Menu
+                        //Incrementar o código da musica
+
+                        codigoMusica++;
+
+                        Console.WriteLine("--Adicionar Musica--\n\n");
+
+                        // Pede o titulo da musica
+                        Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
+
+                        // Limpa a Consola
                         Console.Clear();
-                        Console.WriteLine("========= GERIR MUSICAS =========");
-                        Console.WriteLine("[1] Adicionar Musica");
-                        Console.WriteLine("[2] Eliminar Musica");
-                        Console.WriteLine("[3] Listar Musicas");
-                        opcao = char.Parse(Console.ReadLine());
-                        Console.Clear();
-                        #endregion
 
-                        #region Adicionar Musica
-                        if (opcao == '1') // Adicionar Musica
-                        {
-                            //Incrementar o código da musica
-
-                            codigoMusica++;
-
-                            Console.WriteLine("--Adicionar Musica--\n\n");
-
-                            // Pede o titulo da musica
-                            Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
-
-                            // Limpa a Consola
-                            Console.Clear();
-
-                            // Regista a nova musica
-                            BL.Musicas.AdicionarMusica(nomeMusica, codigoMusica);
-                        }
+                        // Regista a nova musica
+                        BL.Musicas.AdicionarMusica(nomeMusica, codigoMusica);
+                    }
                     #endregion
 
                     #region Remover Musica
@@ -319,19 +323,69 @@ namespace Main
                         Console.WriteLine("\n--Remover Musica--\n\n");
                         Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
                         BL.Musicas.RemoverMusica(nomeMusica);
-                     }
-                        #endregion
+                    }
+                    #endregion
 
-                        #region Listar Musicas
-                        if (opcao == '3') // Listar Musicas
+                    #region Editar Musica
+                    if (opcao == '3')
+                    {
+                        int index;
+
+                        // Pede o titulo da musica
+                        Console.Write("\nTitulo: "); nomeMusica = Console.ReadLine();
+                        Console.Clear();
+                        index = BL.Musicas.ExisteMusica(nomeMusica);
+                        if (index == 0)
+                            Console.WriteLine("Não existe nenhuma musica com o nome {0}", nomeMusica);
+                        else
                         {
+                            // Pede o titulo da musica
+                            Console.Write("\nTitulo novo: "); nomeMusica = Console.ReadLine();
+
+                            // Limpa a Consola
                             Console.Clear();
-                            Console.WriteLine("--Listagem de Musicas--\n\n");
-                            BL.Musicas.MostraMusicasDisponiveis();
+
+                            // Edita a musica nova
+                            BL.Musicas.EditarMusicaBO(index, nomeMusica);
+
+                            //Mostrar mensagem ao utilizador
+                            Console.WriteLine("Musica editada com sucesso!!");
                             Console.ReadKey();
                         }
-                        #endregion
                     }
+                    #endregion
+
+                    #region Listar Musicas
+                    if (opcao == '4') // Listar Musicas
+                    {
+                        Console.Clear();
+                        Console.WriteLine("--Listagem de Musicas--\n\n");
+                        BL.Musicas.MostraMusicasDisponiveis();
+                        Console.ReadKey();
+                    }
+                    #endregion
+
+                    #region Listar Musicas por Album
+                    if (opcao == '5')
+                    {
+                        bool musicas;
+
+                        // Pede o titulo do album
+                        Console.Write("\nTitulo do album: "); nomeAlbum = Console.ReadLine();
+
+                        //Verificar se existem musicas nesse album
+                        musicas = BL.Musicas.ListarMusicasPorAlbum(nomeAlbum);
+
+                        //Caso o album não exista ou não tenha musicas mostrar mensagem
+                        if (musicas == false)
+                        {
+                            Console.WriteLine("Não existem musicas para listar!!");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+                    }
+                    #endregion
+                }
                     #endregion
 
                     #region Default
