@@ -160,8 +160,10 @@ namespace Main
                         Console.WriteLine("========= GERIR ALBUNS =========");
                         Console.WriteLine("[1] Adicionar AlbumBO");
                         Console.WriteLine("[2] Eliminar AlbumBO");
-                        Console.WriteLine("[3] Listar Albuns");
-                        Console.WriteLine("[4] Atribuir Musica");
+                        Console.WriteLine("[3] Editar AlbumBO");
+                        Console.WriteLine("[4] Listar Albuns");
+                        Console.WriteLine("[5] Listar Albuns por Estilo");
+                        Console.WriteLine("[6] Atribuir Musica");
                         opcao = char.Parse(Console.ReadLine());
                         Console.Clear();
                         #endregion
@@ -201,17 +203,69 @@ namespace Main
                             Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
                             BL.Albuns.RemoverAlbumBO(nomeAlbum);
                         }
+                    #endregion
+
+                        #region Editar Album
+                    if (opcao == '3')
+                    {
+                        // Pede o titulo do album
+                        int index;
+                        Console.Write("\nTitulo do Album: "); nomeAlbum = Console.ReadLine();
+                        Console.Clear();
+                        index = BL.Albuns.ExisteAlbum(nomeAlbum);
+                        if (index == 0)
+                            Console.WriteLine("Não existe nenhum album com o nome {0}", nomeAlbum);
+                        else
+                        {
+                            // Pede o titulo do album
+                            Console.Write("\nTitulo Novo: "); nomeAlbum = Console.ReadLine();
+
+                            // Pede o estilo do album
+                            Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
+
+                            //Pede o ano de lançamento
+                            Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
+
+                            //Pede o número de unidades vendidas
+                            Console.Write("\nNúmero de unidades vendidas: "); unidadesVendidas = int.Parse(Console.ReadLine());
+
+                            // Limpa a Consola
+                            Console.Clear();
+
+                            // Edita o novo album
+                            BL.Albuns.EditarAlbumBO(index, nomeAlbum, ano, estilo, unidadesVendidas);
+
+                            //Mostrar mensagem ao utilizador
+                            Console.WriteLine("Album editado com sucesso!!");
+                            Console.ReadKey();
+                        }
+                    }
                         #endregion
 
                         #region Listar Albuns
-                        if (opcao == '3') // Listar Albuns
+                    if (opcao == '4') // Listar Albuns
                         {
                             BL.Albuns.MostraAlbunsDisponiveis();
                         }
-                        #endregion
+                    #endregion
+
+                        #region Listar por Estilo
+                    if (opcao == '5')
+                    {
+                        bool albuns;
+                        //Listar albuns por estilo
+                        albuns = BL.Albuns.ListaAlbunsPorEstilo();
+                        if (albuns == false)
+                        {
+                            Console.WriteLine("Não existem albuns para listar!!");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+                    }
+                    #endregion
 
                         #region Atribuir uma musica a um album
-                        if (opcao == '4') // Atribuir uma musica a um album
+                    if (opcao == '6') // Atribuir uma musica a um album
                         {
                             Console.Clear();
                             Console.WriteLine("--Atribuir musica a album--\n\n");

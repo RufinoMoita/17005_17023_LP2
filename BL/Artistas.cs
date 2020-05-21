@@ -79,5 +79,23 @@ namespace BL
                 Console.WriteLine("[{0}] {1}", i, DL.Artistas.lstArtistas[i].ToString());
             Console.ReadKey();
         }
+
+        /// <summary>
+        /// Lista os albuns de um artista específico
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static bool ListarAlbunsPorArtista(string nome)
+        {
+                for (int i = 0; i < DL.Artistas.lstArtistas.Count; i++)
+                {
+                    if (nome == DL.Artistas.lstArtistas[i].NomeArtista)
+                    {
+                    DL.Artistas.lstArtistas[i].A.ToString();
+                    return true;
+                    }
+                }
+            return false;
+        }
     }
 }
