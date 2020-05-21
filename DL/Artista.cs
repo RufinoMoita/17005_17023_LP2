@@ -54,77 +54,77 @@ namespace DL
             return false;
         }
 
-        /// <summary>
-        /// Registar um novo artista
-        /// </summary>
-        /// <param name="artistas"></param>
-        /// <param name="novoArtista"></param>
-        /// <returns></returns>
-        public static bool RegistarArtista(ArtistaBO novoArtista)
-        {
-            //Se não existir nenhum artista com o mesmo codigo do artista a registar
-            if (ExisteArtista(novoArtista.NomeArtista) == false)
+            /// <summary>
+            /// Registar um novo artista
+            /// </summary>
+            /// <param name="artistas"></param>
+            /// <param name="novoArtista"></param>
+            /// <returns></returns>
+            public static bool RegistarArtista(ArtistaBO novoArtista)
             {
-                //Adiciona um novo artista
-                lstArtistas.Add(novoArtista);
-                return true;
-            }
-
-            //Caso o nome já exista, retorna false
-            return false;
-        }
-
-        /// <summary>
-        /// Remover um artista específico
-        /// </summary>
-        /// <param name="artistas"></param>
-        /// <param name="nomeArtista"></param>
-        /// <returns></returns>
-        public static bool RemoverArtista(string nomeArtista)
-        {
-            int index = ObterArtistaIndex(nomeArtista);
-            if (index != -1)
-            {
-                //Caso o artista exista
-                if (lstArtistas[index].NomeArtista == nomeArtista)
+                //Se não existir nenhum artista com o mesmo codigo do artista a registar
+                if (ExisteArtista(novoArtista.NomeArtista) == false)
                 {
-                    //Remove o utilizador do indice "index"
-                    lstArtistas.RemoveAt(index);
-                    //Retorna true pois foi eliminado
+                    //Adiciona um novo artista
+                    lstArtistas.Add(novoArtista);
                     return true;
                 }
+
+                //Caso o nome já exista, retorna false
+                return false;
             }
-            //Retorna false pois não conseguiu remover o artistas
-            return false;
-        }
 
-        /// <summary>
-        /// Atribuir um album a um artista
-        /// </summary>
-        /// <param name="artistas"></param>
-        /// <param name="nomeArtista"></param>
-        /// <param name="albuns"></param>
-        /// <param name="titulo"></param>
-        /// <returns></returns>
-        public static bool AtribuirAlbum(string nomeArtista, string titulo, List<AlbumBO> albuns)
-        {
-            int artistaIndex = ObterArtistaIndex(nomeArtista);
-            if (artistaIndex != -1)
+            /// <summary>
+            /// Remover um artista específico
+            /// </summary>
+            /// <param name="artistas"></param>
+            /// <param name="nomeArtista"></param>
+            /// <returns></returns>
+            public static bool RemoverArtista(string nomeArtista)
             {
-                if (!Albuns.ExisteAlbum(titulo))
+                int index = ObterArtistaIndex(nomeArtista);
+                if (index != -1)
                 {
-
-                    int albumIndex = Albuns.ObterAlbumIndex(titulo);
-                    if (albumIndex != -1)
+                    //Caso o artista exista
+                    if (lstArtistas[index].NomeArtista == nomeArtista)
                     {
-                        //Adicionar o album ao artista
-                        lstArtistas[artistaIndex].A.Add(albuns[albumIndex]);
+                        //Remove o utilizador do indice "index"
+                        lstArtistas.RemoveAt(index);
+                        //Retorna true pois foi eliminado
                         return true;
                     }
                 }
+                //Retorna false pois não conseguiu remover o artistas
+                return false;
             }
-            return false;
+
+            /// <summary>
+            /// Atribuir um album a um artista
+            /// </summary>
+            /// <param name="artistas"></param>
+            /// <param name="nomeArtista"></param>
+            /// <param name="albuns"></param>
+            /// <param name="titulo"></param>
+            /// <returns></returns>
+            public static bool AtribuirAlbum(string nomeArtista, string titulo, List<AlbumBO> albuns)
+            {
+                int artistaIndex = ObterArtistaIndex(nomeArtista);
+                if (artistaIndex != -1)
+                {
+                    if (!Albuns.ExisteAlbum(titulo))
+                    {
+
+                        int albumIndex = Albuns.ObterAlbumIndex(titulo);
+                        if (albumIndex != -1)
+                        {
+                            //Adicionar o album ao artista
+                            lstArtistas[artistaIndex].A.Add(albuns[albumIndex]);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            #endregion
         }
-        #endregion
     }
-}

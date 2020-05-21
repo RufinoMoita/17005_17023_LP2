@@ -10,7 +10,6 @@
 using System;
 using System.Collections.Generic;
 using BL;
-using System.Web.Script.Serialization;
 using System.IO;
 
 namespace Main
@@ -33,44 +32,14 @@ namespace Main
             int duracao, unidadesVendidas, codigoArtista = 0, codigoAlbum = 0, codigoMusica = 0, ano;
             #endregion
 
-            #region JSON
-            //// Variaveis que vão guardar os dados
-            //string artistaJSON, albumJSON, musicaJSON;
-            //// Caminho para os ficheiros .json
-            //string artistaPath = Path.GetFullPath(Path.Combine(@"../../Artistas.json"));
-            //string albumPath = Path.GetFullPath(Path.Combine(@"../../Albuns.json"));
-            //string musicaPath = Path.GetFullPath(Path.Combine(@"../../Musicas.json"));
-            //// Instanciar JavaScriptSerializer para converter o objeto para JSON
-            //var javaScriptSerializer = new JavaScriptSerializer();
-
-            //// Se o caminho para o ficheiro JSON de Artistas, Albuns e Musicas existir...
-            //if (File.Exists(artistaPath) && File.Exists(albumPath) && File.Exists(musicaPath))
-            //{
-            //    // Lê os dados do ficheiro .JSON
-            //    artistaJSON = File.ReadAllText(artistaPath);
-            //    albumJSON = File.ReadAllText(albumPath);
-            //    musicaJSON = File.ReadAllText(musicaPath);
-
-            //    // Importa os dados para o objecto
-            //    artistas = javaScriptSerializer.Deserialize<List<Artista>>(artistaJSON);
-            //    albuns = javaScriptSerializer.Deserialize<List<AlbumBO>>(albumJSON);
-            //    musicas = javaScriptSerializer.Deserialize<List<Musica>>(musicaJSON);
-            //}
+            #region InicializarJson
+            BL.Json.InicializaJson();
             #endregion
-
             #region Menu
             while (voltar != false)
             {
-                #region Gravar JSON
-                /// Serializa o objeto para JSON e guarda-o numa string 
-                //artistaJSON = javaScriptSerializer.Serialize(artistas);
-                //albumJSON = javaScriptSerializer.Serialize(albuns);
-                //musicaJSON = javaScriptSerializer.Serialize(musicas);
-                //// Escreve o texto nas strings nos respetivos ficheiros *.json
-                //File.WriteAllText(artistaPath, artistaJSON);
-                //File.WriteAllText(albumPath, albumJSON);
-                //File.WriteAllText(musicaPath, musicaJSON);
-
+                #region GravarJson
+                BL.Json.GravaJson();
                 #endregion
 
                 #region Início
@@ -91,7 +60,8 @@ namespace Main
                     Console.WriteLine("[1] Adicionar Artista");
                     Console.WriteLine("[2] Eliminar Artista");
                     Console.WriteLine("[3] Listar Artistas");
-                    Console.WriteLine("[4] Atribuir AlbumBO");
+                    Console.WriteLine("[4] Editar Artistas");
+                    Console.WriteLine("[5] Atribuir AlbumBO");
                     Console.WriteLine("[0] Voltar");
                     opcao = char.Parse(Console.ReadLine());
                     Console.Clear();
@@ -136,8 +106,42 @@ namespace Main
                     }
                     #endregion
 
+                    #region Editar Artistas
+                    else if(opcao == '4') // Editar Artistas
+                    {
+                        int index;
+                        Console.Write("\nNome do artista: "); nomeArtista = Console.ReadLine();
+                        Console.Clear();
+                        index = BL.Artistas.ExisteArtista(nomeArtista);
+                        if (index == 0)
+                            Console.WriteLine("Não existe nenhum artista com o nome {0}", nomeArtista);
+                        else
+                        {
+                            Console.WriteLine("----Editar----");
+                            // Pede o nome do artista
+                            Console.Write("\nNome: "); nomeArtista = Console.ReadLine();
+
+                            // Pede o tipo do artista
+                            Console.Write("\nTipo:"); tipoArtista = Console.ReadLine();
+
+                            //Pede a duração do contrato
+                            Console.Write("\nDuração do contrato: "); duracao = int.Parse(Console.ReadLine());
+
+                            // Edita o novo album
+                            BL.Artistas.EditarArtistaBO(index, tipoArtista, nomeArtista, duracao);
+
+                            //Mostrar mensagem ao utilizador
+                            Console.WriteLine("Album editado com sucesso!!");
+                            Console.ReadKey();
+
+
+                        }
+
+                    }
+                    #endregion
+
                     #region Atribuir um album a um artista
-                    else if (opcao == '4') // Atribuir um album a um artista
+                    else if (opcao == '5') // Atribuir um album a um artista
                     {
                         Console.Clear();
                         Console.WriteLine("--Atribuir album a artista--\n\n");
@@ -401,8 +405,8 @@ namespace Main
                         Console.Clear(); Console.WriteLine("Opção Inválida! ");
                     }
                     #endregion
-             #endregion
             }
+            #endregion
         }
     }
 }

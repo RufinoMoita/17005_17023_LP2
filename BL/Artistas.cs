@@ -48,6 +48,22 @@ namespace BL
         }
 
         /// <summary>
+        /// Verifica se o artista existe através do seu nome
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static int ExisteArtista(string nome)
+        {
+            //Caso exista devolve a posição
+            if (DL.Artistas.ObterArtistaIndex(nome) != -1)
+                return DL.Artistas.ObterArtistaIndex(nome);
+            //caso não exista devolve 0
+            else
+                return 0;
+        }
+
+
+        /// <summary>
         /// Remover um artista da lista
         /// </summary>
         /// <param name="nome"></param>
@@ -96,6 +112,27 @@ namespace BL
                     }
                 }
             return false;
+        }
+
+        /// <summary>
+        /// Edita os dados de um determinado artista
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="tipo"></param>
+        /// <param name="nomeArtista"></param>
+        /// <param name="duracao"></param>
+        public static void EditarArtistaBO(int index, string tipo, string nomeArtista, int duracao)
+        {
+            int codigo;
+            DateTime data;
+            //Guardar o código e a data
+            codigo = DL.Artistas.lstArtistas[index].CodigoArtista;
+            data = DL.Artistas.lstArtistas[index].Data;
+            //Remover o artista antigo
+            DL.Albuns.lstAlbuns.RemoveAt(index);
+
+            //Adicionar um novo artista com o mesmo código e data de inicio de contrato
+            AdicionarArtista(tipo, nomeArtista, codigo, data, duracao);
         }
     }
 }

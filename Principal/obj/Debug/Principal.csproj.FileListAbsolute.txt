@@ -12,3 +12,17 @@ C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.csproj.CopyComplete
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.exe
 C:\Users\rui_g\OneDrive\Ambiente de Trabalho\IPCA\LP2\TP_LP2\Principal\obj\Debug\Principal.pdb
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\Principal.exe.config
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\Principal.exe
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\Principal.pdb
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\BL.dll
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\BO.dll
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\DL.dll
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\BL.pdb
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\BO.pdb
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\bin\Debug\DL.pdb
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\obj\Debug\Principal.csprojAssemblyReference.cache
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\obj\Debug\Principal.csproj.CoreCompileInputs.cache
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\obj\Debug\Principal.csproj.CopyComplete
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\obj\Debug\Principal.exe
+D:\IPCA\2º Ano\2º Semestre\LP2\TrabalhoFinal\Principal\obj\Debug\Principal.pdb
