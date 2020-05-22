@@ -67,10 +67,16 @@ namespace BL
         /// Remover um artista da lista
         /// </summary>
         /// <param name="nome"></param>
-        public static void RemoverArtista(string nome)
+        public static bool RemoverArtista(string nome)
         {
+            bool aux;
             //Remover artista da lista
-            DL.Artistas.RemoverArtista(nome);
+            aux = DL.Artistas.RemoverArtista(nome);
+
+            if (aux == false)
+                return false;
+            else
+                return true;
         }
 
         /// <summary>
@@ -78,22 +84,33 @@ namespace BL
         /// </summary>
         /// <param name="nomeArtista"></param>
         /// <param name="nomeAlbum"></param>
-        public static void AtribuirAlbum(string nomeArtista, string nomeAlbum)
+        public static bool AtribuirAlbum(string nomeArtista, string nomeAlbum)
         {
+            bool aux;
             //Atribuir o album ao artista
-            DL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum, DL.Albuns.lstAlbuns);
+            aux = DL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum, DL.Albuns.lstAlbuns);
+
+            //Retorna false caso não tenha conseguido associar o album ao artista
+            if (aux == false)
+                return false;
+            else
+                return true;
         }
 
         /// <summary>
         /// Listar artistas
         /// </summary>
-        public static void ListarArtistas()
+        public static bool ListarArtistas()
         {
-            Console.Clear();
-            Console.WriteLine("--Listagem de Artistas--\n\n");
-            for (int i = 0; i < DL.Artistas.lstArtistas.Count; i++)
-                Console.WriteLine("[{0}] {1}", i, DL.Artistas.lstArtistas[i].ToString());
-            Console.ReadKey();
+            if (DL.Artistas.lstArtistas.Count != 0)
+            {
+                //Lista todos os artistas
+                for (int i = 0; i < DL.Artistas.lstArtistas.Count; i++)
+                    Console.WriteLine(DL.Artistas.lstArtistas[i].ToString());
+                return true;
+            }
+            else
+                return false;
         }
 
         /// <summary>
@@ -129,10 +146,20 @@ namespace BL
             codigo = DL.Artistas.lstArtistas[index].CodigoArtista;
             data = DL.Artistas.lstArtistas[index].Data;
             //Remover o artista antigo
-            DL.Albuns.lstAlbuns.RemoveAt(index);
+            DL.Artistas.lstArtistas.RemoveAt(index);
 
             //Adicionar um novo artista com o mesmo código e data de inicio de contrato
             AdicionarArtista(tipo, nomeArtista, codigo, data, duracao);
+        }
+
+        /// <summary>
+        /// Devolve o tamanho da lista, para poder incrementar o código
+        /// </summary>
+        /// <returns></returns>
+        public static int TamanhoListaArtistas()
+        {
+            //Devolve o tamanho da lista
+            return DL.Artistas.lstArtistas.Count;
         }
     }
 }

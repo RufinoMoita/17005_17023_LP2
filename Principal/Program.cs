@@ -29,12 +29,17 @@ namespace Main
 
             //variaveis que armazenam dados temporariamente
             string nomeArtista, tipoArtista, nomeAlbum, nomeMusica, estilo;
-            int duracao, unidadesVendidas, codigoArtista = 0, codigoAlbum = 0, codigoMusica = 0, ano;
+            int duracao, unidadesVendidas, ano;
             #endregion
 
             #region InicializarJson
             BL.Json.InicializaJson();
             #endregion
+
+            #region Inicializar Códigos
+            int codigoArtista = BL.Artistas.TamanhoListaArtistas(), codigoAlbum = BL.Albuns.TamanhoListaAlbuns(), codigoMusica = Musicas.TamanhoListaMusicas();
+            #endregion
+
             #region Menu
             while (voltar != false)
             {
@@ -70,6 +75,7 @@ namespace Main
                     #region Adicionar Artista
                     if (opcao == '1') // Adicionar Artista
                     {
+
                         //Incrementar o código do artista
                         codigoArtista++;
 
@@ -93,16 +99,37 @@ namespace Main
                     #region Remover Artista
                     else if (opcao == '2') // Remover artista
                     {
+                        bool aux;
                         Console.WriteLine("--Remover Artista--\n\n");
+                        //Ler nome
                         Console.Write("\nNome: "); nomeArtista = Console.ReadLine();
-                        BL.Artistas.RemoverArtista(nomeArtista);
+                        //Remover o artista
+                        aux = BL.Artistas.RemoverArtista(nomeArtista);
+
+                        //Mostrar mensagem de erro caso não tenho sido possivel remover o artista
+                        if (aux == false)
+                            {
+                            Console.WriteLine("Não foi possível remover o artista!!");
+                            }
                     }
                     #endregion
 
                     #region Listar Artistas
                     else if (opcao == '3') // Listar Artistas
                     {
-                        BL.Artistas.ListarArtistas();
+                        bool aux;
+                        //Listar os artistas
+                        aux = BL.Artistas.ListarArtistas();
+
+                        //Avisar o utilizador caso ainda não hajam artistas
+                        if (aux == false)
+                        {
+                            Console.WriteLine("Ainda não existem artistas!!");
+                        }
+                        //Esperar por clique e limpar consola
+                        Console.ReadKey();
+                        Console.Clear();
+                       
                     }
                     #endregion
 
@@ -131,8 +158,11 @@ namespace Main
                             BL.Artistas.EditarArtistaBO(index, tipoArtista, nomeArtista, duracao);
 
                             //Mostrar mensagem ao utilizador
-                            Console.WriteLine("Album editado com sucesso!!");
+                            Console.WriteLine("Artista editado com sucesso!!");
                             Console.ReadKey();
+
+                            //Limpar consola
+                            Console.Clear();
 
 
                         }
@@ -143,14 +173,35 @@ namespace Main
                     #region Atribuir um album a um artista
                     else if (opcao == '5') // Atribuir um album a um artista
                     {
+                        bool aux, aux2;
                         Console.Clear();
                         Console.WriteLine("--Atribuir album a artista--\n\n");
                         Console.WriteLine("========= Albuns Disponíveis =========");
-                        BL.Albuns.MostraAlbunsDisponiveis();
-                        Console.Write("\n\nNome do artista: "); nomeArtista = Console.ReadLine();
-                        Console.Write("\nNome do album: "); nomeAlbum = Console.ReadLine();
-                        Console.Clear();
-                        BL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum);
+                        //Listar as musicas
+                        aux2 = BL.Albuns.MostraAlbunsDisponiveis();
+                        //Mostrar mensagem caso a lista esteja vazia
+                        if (aux2 == false)
+                        {
+                            Console.WriteLine("Não existem albuns para atribuir!!");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            Console.Write("\n\nNome do artista: "); nomeArtista = Console.ReadLine();
+                            Console.Write("\nNome do album: "); nomeAlbum = Console.ReadLine();
+                            Console.Clear();
+                            //Tentar atribuir
+                            aux = BL.Artistas.AtribuirAlbum(nomeArtista, nomeAlbum);
+                            //Mostrar mensagem caso não consiga
+                            if (aux == false)
+                            {
+                                Console.WriteLine("Erro!!");
+                                Console.WriteLine("Não foi possível atribuir o album {0} ao artista {1}", nomeAlbum, nomeArtista);
+                            }
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
                     }
                     #endregion
                 }
@@ -204,9 +255,24 @@ namespace Main
                     #region Remover Album
                     if (opcao == '2') // Remover album
                     {
+                        bool aux;
                         Console.WriteLine("\n--Remover AlbumBO--\n\n");
                         Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
-                        BL.Albuns.RemoverAlbumBO(nomeAlbum);
+                        //Tenta remover
+                        aux = BL.Albuns.RemoverAlbumBO(nomeAlbum);
+                        Console.Clear();
+                        //Mostra mensagem caso não tenha removido
+                        if (aux == false)
+                        {
+                            Console.WriteLine("Erro!!");
+                            Console.WriteLine("Não foi possível remover o album {0}", nomeAlbum);
+                        }
+                        //Mostra mensagem caso tenha removido
+                        else
+                            Console.WriteLine("{0} - Removido com sucesso", nomeAlbum);
+
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     #endregion
 
@@ -243,6 +309,7 @@ namespace Main
                             //Mostrar mensagem ao utilizador
                             Console.WriteLine("Album editado com sucesso!!");
                             Console.ReadKey();
+                            Console.Clear();
                         }
                     }
                     #endregion
@@ -250,7 +317,14 @@ namespace Main
                     #region Listar Albuns
                     if (opcao == '4') // Listar Albuns
                     {
-                        BL.Albuns.MostraAlbunsDisponiveis();
+                        bool aux;
+                        //Lista os albuns
+                        aux = BL.Albuns.MostraAlbunsDisponiveis();
+                        //Mostra mensagem caso a lista esteja vazia
+                        if (aux == false)
+                            Console.WriteLine("Não existem álbuns para ser listados!!");
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     #endregion
 
@@ -272,14 +346,35 @@ namespace Main
                     #region Atribuir uma musica a um album
                     if (opcao == '6') // Atribuir uma musica a um album
                     {
+                        bool aux, aux2;
                         Console.Clear();
                         Console.WriteLine("--Atribuir musica a album--\n\n");
                         Console.WriteLine("========= Musicas Disponíveis =========");
-                        BL.Musicas.MostraMusicasDisponiveis();
-                        Console.Write("\n\nNome do AlbumBO: "); nomeAlbum = Console.ReadLine();
-                        Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
-                        Console.Clear();
-                        BL.Albuns.AssociarMusicaBO(nomeAlbum, nomeMusica);
+                        //Listar as musicas
+                        aux2 = BL.Musicas.MostraMusicasDisponiveis();
+                        //Mostrar mensagem caso a lista esteja vazia
+                        if (aux2 == false)
+                        {
+                            Console.WriteLine("Não existem músicas para atribuir!!");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            Console.Write("\n\nNome do AlbumBO: "); nomeAlbum = Console.ReadLine();
+                            Console.Write("\nNome da Musica: "); nomeMusica = Console.ReadLine();
+                            Console.Clear();
+                            //Tentar associar musica ao album
+                            aux = BL.Albuns.AssociarMusicaBO(nomeAlbum, nomeMusica);
+                            //Mostrar mensagem caso não consiga
+                            if (aux == false)
+                            {
+                                Console.WriteLine("Erro!!");
+                                Console.WriteLine("Não foi possível atribuir a música {0} ao album {1}!!", nomeAlbum, nomeMusica);
+                            }
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
                     }
                     #endregion
                 }
@@ -392,7 +487,7 @@ namespace Main
                 }
                     #endregion
 
-                    #region Default
+                #region Default
                     //Sair
                     else if (opcao == '0')
                     {

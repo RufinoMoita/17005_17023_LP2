@@ -53,10 +53,18 @@ namespace BL
         /// <summary>
         /// Lista musicas disponveis
         /// </summary>
-        public static void MostraMusicasDisponiveis()
+        public static bool MostraMusicasDisponiveis()
         {
-            for (int i = 0; i < DL.Musicas.lstMusicas.Count; i++)
-                Console.WriteLine(DL.Musicas.lstMusicas[i].ToString());
+            //Lista as musicas
+            if (DL.Musicas.lstMusicas.Count != 0)
+            {
+                for (int i = 0; i < DL.Musicas.lstMusicas.Count; i++)
+                    Console.WriteLine(DL.Musicas.lstMusicas[i].ToString());
+                return true;
+            }
+            //Retorna false caso a lista esteja vazia
+            else
+                return false;
         }
 
         /// <summary>
@@ -104,6 +112,16 @@ namespace BL
             DL.Musicas.lstMusicas.RemoveAt(index);
             //Adicionar uma nova musica com o mesmo código da antiga
             AdicionarMusica(nome, codigo);
+        }
+
+        /// <summary>
+        /// Devolve o tamanho da lista, para poder incrementar o código
+        /// </summary>
+        /// <returns></returns>
+        public static int TamanhoListaMusicas()
+        {
+            //Devolve o tamanho da lista
+            return DL.Musicas.lstMusicas.Count;
         }
     }
 }

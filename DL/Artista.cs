@@ -94,7 +94,7 @@ namespace DL
                         return true;
                     }
                 }
-                //Retorna false pois não conseguiu remover o artistas
+                //Retorna false pois não conseguiu encontrar o artista
                 return false;
             }
 

@@ -122,13 +122,6 @@ namespace BO
             string output = string.Format("\nTitulo: {0}\nCódigo: {1}\nAno de lançamento: {2}\nEstilo: {3}\nUnidades vendidas: {4}"
                 , titulo, codigoAlbum, ano, estilo, unidadesVendidas);
 
-            Console.WriteLine("---MUSICAS---");
-            //Percorrer todas as musicas do album
-            for (int i = 0; i < musicas.Count; i++)
-            {
-                output = output + string.Format("{0}", musicas[i].ToString());
-            }
-
             return output;
         }
 

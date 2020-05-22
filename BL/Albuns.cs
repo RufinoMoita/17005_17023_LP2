@@ -42,10 +42,17 @@ namespace BL
         /// Remover albuns da lista de albuns
         /// </summary>
         /// <param name="titulo"></param>
-        public static void RemoverAlbumBO(string titulo)
+        public static bool RemoverAlbumBO(string titulo)
         {
+            bool aux;
             //Remover o album específicado
-            DL.Albuns.RemoverAlbum(titulo);
+            aux = DL.Albuns.RemoverAlbum(titulo);
+
+            //Retorna false caso não tenha removido
+            if (aux == false)
+                return false;
+            else
+                return true;
         }
 
         /// <summary>
@@ -53,10 +60,19 @@ namespace BL
         /// </summary>
         /// <param name="nomeAlbum"></param>
         /// <param name="nomeMusica"></param>
-        public static void AssociarMusicaBO(string nomeAlbum, string nomeMusica)
+        public static bool AssociarMusicaBO(string nomeAlbum, string nomeMusica)
         {
+            bool aux;
             //Atribuir uma musica a um artista
-            DL.Albuns.AtribuirMusica(nomeAlbum, nomeMusica, DL.Musicas.lstMusicas);
+            aux = DL.Albuns.AtribuirMusica(nomeAlbum, nomeMusica, DL.Musicas.lstMusicas);
+
+            //Retorna false se não conseguiu atribuir
+            if (aux == false)
+                return false;
+
+            //Retorna true se conseguiu 
+            else
+                return true;
         }
 
         /// <summary>
@@ -106,11 +122,17 @@ namespace BL
         /// <summary>
         /// Mostra Albuns disponiveis
         /// </summary>
-        public static void MostraAlbunsDisponiveis()
+        public static bool MostraAlbunsDisponiveis()
         {
-            //Lista todos os albuns
-            for (int i = 0; i < DL.Albuns.lstAlbuns.Count; i++)
-                Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
+            if (DL.Albuns.lstAlbuns.Count != 0)
+            {
+                //Lista todos os albuns
+                for (int i = 0; i < DL.Albuns.lstAlbuns.Count; i++)
+                    Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
+                return true;
+            }
+            //Retorna false caso a lista esteja vazia
+                return false;
         }
         
         /// <summary>
@@ -202,5 +224,14 @@ namespace BL
             AdicionarAlbumBO(codigo, novoTitulo, ano, estilo, unidadesVendidas);
         }
 
+        /// <summary>
+        /// Devolve o tamanho da lista, para poder incrementar o código
+        /// </summary>
+        /// <returns></returns>
+        public static int TamanhoListaAlbuns()
+        {
+           //Devolve o tamanho da lista
+           return DL.Albuns.lstAlbuns.Count;
+        }
     }
 }
