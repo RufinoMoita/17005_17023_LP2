@@ -108,9 +108,9 @@ namespace Main
 
                         //Mostrar mensagem de erro caso não tenho sido possivel remover o artista
                         if (aux == false)
-                            {
+                        {
                             Console.WriteLine("Não foi possível remover o artista!!");
-                            }
+                        }
                     }
                     #endregion
 
@@ -129,12 +129,12 @@ namespace Main
                         //Esperar por clique e limpar consola
                         Console.ReadKey();
                         Console.Clear();
-                       
+
                     }
                     #endregion
 
                     #region Editar Artistas
-                    else if(opcao == '4') // Editar Artistas
+                    else if (opcao == '4') // Editar Artistas
                     {
                         int index;
                         Console.Write("\nNome do artista: "); nomeArtista = Console.ReadLine();
@@ -198,6 +198,12 @@ namespace Main
                             {
                                 Console.WriteLine("Erro!!");
                                 Console.WriteLine("Não foi possível atribuir o album {0} ao artista {1}", nomeAlbum, nomeArtista);
+                            }
+
+                            else if (aux == true)
+                            {
+                                Console.WriteLine("Sucesso!!");
+                                Console.WriteLine("O album {0} foi atribuido ao artista {1}", nomeAlbum, nomeArtista);
                             }
                             Console.ReadKey();
                             Console.Clear();
@@ -343,6 +349,8 @@ namespace Main
                     }
                     #endregion
 
+                    //Adicionar Listar Albuns de determinado artista
+
                     #region Atribuir uma musica a um album
                     if (opcao == '6') // Atribuir uma musica a um album
                     {
@@ -377,6 +385,7 @@ namespace Main
                         }
                     }
                     #endregion
+                
                 }
                 #endregion
 

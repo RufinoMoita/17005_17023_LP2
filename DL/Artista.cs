@@ -111,7 +111,7 @@ namespace DL
                 int artistaIndex = ObterArtistaIndex(nomeArtista);
                 if (artistaIndex != -1)
                 {
-                    if (!Albuns.ExisteAlbum(titulo))
+                    if (Albuns.ExisteAlbum(titulo) == true)
                     {
 
                         int albumIndex = Albuns.ObterAlbumIndex(titulo);

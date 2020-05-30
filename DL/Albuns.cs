@@ -115,7 +115,7 @@ namespace DL
             //Se o album existir
             if (albumIndex != -1)
             {
-                if (!Musicas.ExisteMusica(nome))
+                if (Musicas.ExisteMusica(nome) == true) ;
                 {
                     //Descobrir a posição da musica
                     int musicaIndex = Musicas.ObterMusicaIndex(nome);
