@@ -94,7 +94,14 @@ namespace BL
             if (existe == -1)
                 return false;
             else
-                DL.Albuns.lstAlbuns[existe].M.ToString();
+            {
+                //Listar a lista de musicas do abum
+                foreach (MusicaBO musica in DL.Albuns.lstAlbuns[existe].M)
+                {
+                    Console.WriteLine("----Musica----");
+                    Console.WriteLine("Título: " + musica.Nome + "\n\n");
+                }
+            }
             return true;
         }
 

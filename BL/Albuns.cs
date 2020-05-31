@@ -190,6 +190,29 @@ namespace BL
         }
 
         /// <summary>
+        /// Lista albuns de um determinado artista
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static bool ListarAlbunsPorArtista(string nome)
+        {
+            int existe;
+            existe = DL.Artistas.ObterArtistaIndex(nome);
+            if (existe == -1)
+                return false;
+            else
+            {
+                //Listar a lista de albuns do artista
+                foreach (AlbumBO album in DL.Artistas.lstArtistas[existe].A)
+                {
+                    Console.WriteLine("----Album----");
+                    Console.WriteLine("Título: " + album.Titulo + "\n" + "Ano: " + album.Ano + "\n" + "Unidades Vendidas:" + album.UnidadesVendidas + "\n\n");
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Verificar se o album existe atraves do nome
         /// </summary>
         /// <param name="nome"></param>

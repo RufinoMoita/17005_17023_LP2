@@ -219,12 +219,13 @@ namespace Main
                     #region Menu
                     Console.Clear();
                     Console.WriteLine("========= GERIR ALBUNS =========");
-                    Console.WriteLine("[1] Adicionar AlbumBO");
-                    Console.WriteLine("[2] Eliminar AlbumBO");
-                    Console.WriteLine("[3] Editar AlbumBO");
+                    Console.WriteLine("[1] Adicionar Album");
+                    Console.WriteLine("[2] Eliminar Album");
+                    Console.WriteLine("[3] Editar Album");
                     Console.WriteLine("[4] Listar Albuns");
                     Console.WriteLine("[5] Listar Albuns por Estilo");
-                    Console.WriteLine("[6] Atribuir Musica");
+                    Console.WriteLine("[6] Listar Albuns por Artista");
+                    Console.WriteLine("[7] Atribuir Musica");
                     Console.WriteLine("[0] Voltar");
                     opcao = char.Parse(Console.ReadLine());
                     Console.Clear();
@@ -349,10 +350,32 @@ namespace Main
                     }
                     #endregion
 
-                    //Adicionar Listar Albuns de determinado artista
+                    #region Listar Albuns por Artista
+                    if (opcao == '6')
+                    {
+                        bool albuns;
+
+                        // Pede o nome do artista
+                        Console.Write("\nNome do Artista: "); nomeArtista = Console.ReadLine();
+
+                        //Verificar se o artista tem albuns associados
+                        albuns = BL.Albuns.ListarAlbunsPorArtista(nomeArtista);
+
+                        //Caso o album não exista ou não tenha musicas mostrar mensagem
+                        if (albuns == false)
+                        {
+                            Console.WriteLine("Não existem albuns para listar!!");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+
+                        Console.ReadKey();
+                        Console.Clear();
+                    }
+                    #endregion
 
                     #region Atribuir uma musica a um album
-                    if (opcao == '6') // Atribuir uma musica a um album
+                    if (opcao == '7') // Atribuir uma musica a um album
                     {
                         bool aux, aux2;
                         Console.Clear();
@@ -491,6 +514,9 @@ namespace Main
                             Console.ReadKey();
                             Console.Clear();
                         }
+
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     #endregion
                 }
