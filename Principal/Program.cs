@@ -52,6 +52,7 @@ namespace Main
                 Console.WriteLine("[1] Artistas");
                 Console.WriteLine("[2] Albuns");
                 Console.WriteLine("[3] Músicas");
+                Console.WriteLine("[4] DashBoard");
                 Console.WriteLine("[0] Sair");
                 opcao = char.Parse(Console.ReadLine());
                 #endregion
@@ -414,7 +415,7 @@ namespace Main
                         }
                     }
                     #endregion
-                
+
                 }
                 #endregion
 
@@ -530,7 +531,19 @@ namespace Main
                 #endregion
 
                 #region Dashboard
-                //Adicionar dashboard
+                else if (opcao == '4')
+                {
+                Console.Clear();
+                Console.WriteLine("----Dashboard----\n");
+                Console.WriteLine("Total de artistas - {0}\n", BL.Artistas.TotalArtistas());
+                Console.WriteLine("Total de musicas - {0}\n", BL.Musicas.TotalMusicas());
+                Console.WriteLine("Album mais vendido: ");
+                BL.Albuns.MaisVendido();
+                Console.WriteLine("Album menos vendido: ");
+                BL.Albuns.MenosVendido();
+                Console.ReadKey();
+                Console.Clear();
+                }
                 #endregion
 
                 #region Default

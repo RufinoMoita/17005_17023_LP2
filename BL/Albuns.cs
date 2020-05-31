@@ -93,8 +93,9 @@ namespace BL
                     min = DL.Albuns.lstAlbuns[i];
                 }
             }
+
             //Mostra os dados do album menos vendido
-            min.ToString();  
+            Console.WriteLine("Título - {0}\nUnidades vendidas - {1}\n\n", min.Titulo, min.UnidadesVendidas);
         }    
         
         /// <summary>
@@ -116,7 +117,7 @@ namespace BL
                 }
             }
             //Mostra os dados do album mais vendido
-            max.ToString();
+            Console.WriteLine("Título - {0}\nUnidades vendidas - {1}\n\n", max.Titulo, max.UnidadesVendidas);
         }
 
         /// <summary>
