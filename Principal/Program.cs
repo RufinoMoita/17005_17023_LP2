@@ -200,7 +200,7 @@ namespace Main
                                 Console.WriteLine("Não foi possível atribuir o album {0} ao artista {1}", nomeAlbum, nomeArtista);
                             }
 
-                            else if (aux == true)
+                            else
                             {
                                 Console.WriteLine("Sucesso!!");
                                 Console.WriteLine("O album {0} foi atribuido ao artista {1}", nomeAlbum, nomeArtista);
@@ -403,6 +403,12 @@ namespace Main
                                 Console.WriteLine("Erro!!");
                                 Console.WriteLine("Não foi possível atribuir a música {0} ao album {1}!!", nomeAlbum, nomeMusica);
                             }
+
+                            else
+                            {
+                                Console.WriteLine("Sucesso!!");
+                                Console.WriteLine("A musica {0} foi atribuida ao album {1}!!", nomeMusica, nomeAlbum);
+                            }
                             Console.ReadKey();
                             Console.Clear();
                         }
@@ -493,6 +499,7 @@ namespace Main
                         Console.WriteLine("--Listagem de Musicas--\n\n");
                         BL.Musicas.MostraMusicasDisponiveis();
                         Console.ReadKey();
+                        Console.Clear();
                     }
                     #endregion
 
@@ -520,11 +527,15 @@ namespace Main
                     }
                     #endregion
                 }
-                    #endregion
+                #endregion
+
+                #region Dashboard
+                //Adicionar dashboard
+                #endregion
 
                 #region Default
-                    //Sair
-                    else if (opcao == '0')
+                //Sair
+                else if (opcao == '0')
                     {
                         Environment.Exit(0);
                     }
