@@ -26,15 +26,22 @@ namespace DL
         /// <returns></returns>
         public static int ObterAlbumIndex(string titulo)
         {
-            for (int i = 0; i < lstAlbuns.Count; i++)
-            {
-                //Se encontrar o album
-                if (lstAlbuns[i].Titulo == titulo)
-                    //retorna a sua posição
-                    return i;
+            try {
+                for (int i = 0; i < lstAlbuns.Count; i++)
+                {
+                    //Se encontrar o album
+                    if (lstAlbuns[i].Titulo == titulo)
+                        //retorna a sua posição
+                        return i;
+                }
+                //Se não encontrou retorna -1
+                return -1;
             }
-            //Se não encontrou retorna -1
-            return -1;
+            catch (Exception x)
+            {
+                throw new Exception(x.Message);
+            }
+            
         }
 
         /// <summary>

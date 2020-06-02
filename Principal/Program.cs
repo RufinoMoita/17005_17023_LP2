@@ -129,8 +129,7 @@ namespace Main
                         }
                         //Esperar por clique e limpar consola
                         Console.ReadKey();
-                        Console.Clear();
-
+                        Console.Clear();                        
                     }
                     #endregion
 
@@ -164,8 +163,6 @@ namespace Main
 
                             //Limpar consola
                             Console.Clear();
-
-
                         }
 
                     }
