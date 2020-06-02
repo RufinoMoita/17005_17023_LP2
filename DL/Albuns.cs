@@ -97,7 +97,16 @@ namespace DL
                 //Se encontrar um album com o titulo lido
                 if (lstAlbuns[index].Titulo == titulo)
                 {
-                    //Remover o album de indice index
+                    for (int j = 0; j < DL.Artistas.lstArtistas.Count; j++)
+                    {
+                        for (int i = 0; i < DL.Artistas.lstArtistas[j].A.Count; i++)
+                        {
+                            //Remover o album ao artista
+                            if (DL.Artistas.lstArtistas[j].A[i].Titulo == titulo)
+                                DL.Artistas.lstArtistas[j].A.RemoveAt(i);
+                        }
+                    }
+                    //Remover o album de indice index da lista de albuns
                     lstAlbuns.RemoveAt(index);
                     //Retorna verdadeiro pq o album foi removido
                     return true;
