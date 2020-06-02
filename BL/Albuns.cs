@@ -148,7 +148,7 @@ namespace BL
             {
                 if (DL.Albuns.lstAlbuns[i].Estilo == "Pop")
                 {
-                    DL.Albuns.lstAlbuns[i].ToString();
+                    Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
                     contador++;
                 }
             }
@@ -158,7 +158,7 @@ namespace BL
             {
                 if (DL.Albuns.lstAlbuns[i].Estilo == "Rock")
                 {
-                    DL.Albuns.lstAlbuns[i].ToString();
+                    Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
                     contador++;
                 }
             }
@@ -168,7 +168,7 @@ namespace BL
             {
                 if (DL.Albuns.lstAlbuns[i].Estilo == "Indie")
                 {
-                    DL.Albuns.lstAlbuns[i].ToString();
+                    Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
                     contador++;
                 }
             }
@@ -178,10 +178,13 @@ namespace BL
             {
                 if (DL.Albuns.lstAlbuns[i].Estilo == "Punk")
                 {
-                    DL.Albuns.lstAlbuns[i].ToString();
+                    Console.WriteLine(DL.Albuns.lstAlbuns[i].ToString());
                     contador++;
                 }
             }
+
+            Console.ReadKey();
+            Console.Clear();
 
             if (contador == 0)
                 return false;

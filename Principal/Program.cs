@@ -29,7 +29,7 @@ namespace Main
 
             //variaveis que armazenam dados temporariamente
             string nomeArtista, tipoArtista, nomeAlbum, nomeMusica, estilo;
-            int duracao, unidadesVendidas, ano;
+            int duracao, unidadesVendidas, ano, opcao2;
             #endregion
 
             #region InicializarJson
@@ -237,6 +237,8 @@ namespace Main
                     {
                         //Incrementar o código do album
                         codigoAlbum++;
+                        opcao2 = 0;
+                        estilo = "vazio";
 
                         Console.WriteLine("--Adicionar AlbumBO--\n\n");
 
@@ -244,7 +246,26 @@ namespace Main
                         Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
 
                         // Pede o estilo do album
-                        Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
+                        //while (opcao2 != 1 || opcao2 != 2 || opcao2 != 3 || opcao2 != 4)
+                        //{
+                            Console.Write("\nEstilo musical:\n1-Pop\n2-Rock\n3-Indie\n4-Punk\nR:"); opcao2 = int.Parse(Console.ReadLine());
+                            if (opcao2 == 1)
+                                estilo = "Pop";
+                            else if (opcao2 == 2)
+                                estilo = "Rock";
+                            else if (opcao2 == 3)
+                                estilo = "Indie";
+                            else if (opcao2 == 4)
+                                estilo = "Punk";
+                            else
+                            {
+                                Console.WriteLine("Opção Inválida!!\n\n");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                        //}
+
+
 
                         //Pede o ano de lançamento
                         Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
