@@ -26,7 +26,8 @@ namespace DL
         /// <returns></returns>
         public static int ObterAlbumIndex(string titulo)
         {
-            try {
+            try
+            {
                 for (int i = 0; i < lstAlbuns.Count; i++)
                 {
                     //Se encontrar o album
@@ -37,9 +38,10 @@ namespace DL
                 //Se não encontrou retorna -1
                 return -1;
             }
-            catch (Exception x)
+            catch (Exception e)
             {
-                throw new Exception(x.Message);
+                Console.WriteLine(e.Message);
+                throw;
             }
 
         }
@@ -54,37 +56,47 @@ namespace DL
         {
             int index = ObterAlbumIndex(titulo);
 
-                for (int i = 0; i < lstAlbuns.Count; i++)
+            for (int i = 0; i < lstAlbuns.Count; i++)
+            {
+                if (index != -1)
                 {
-                    if (index != -1)
-                    {
-                        //Se o titulo do album de indice index corresponder a titulo
-                        if (lstAlbuns[index].Titulo == titulo)
-                            //Retorna true pois existe
-                            return true;
-                    }
+                    //Se o titulo do album de indice index corresponder a titulo
+                    if (lstAlbuns[index].Titulo == titulo)
+                        //Retorna true pois existe
+                        return true;
                 }
-                //Retorna falso se não existir
+            }
+            //Retorna falso se não existir
+            return false;
+        }
+
+        /// <summary>
+        /// Registar um novo album
+        /// </summary>
+        /// <param name="albuns"></param>
+        /// <param name="novoAlbum"></param>
+        /// <returns></returns>
+        public static bool RegistarAlbum(AlbumBO novoAlbum)
+        {
+            try
+            {
+                //Se não existir nenhum album com o mesmo titulo
+                if (ExisteAlbum(novoAlbum.Titulo) == false)
+                {
+                    //Adicionar um novo album
+                    lstAlbuns.Add(novoAlbum);
+                    return true;
+                }
+                //Caso já exista um album com o nome lido retorna false
                 return false;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
             }
 
-            /// <summary>
-            /// Registar um novo album
-            /// </summary>
-            /// <param name="albuns"></param>
-            /// <param name="novoAlbum"></param>
-            /// <returns></returns>
-            public static bool RegistarAlbum(AlbumBO novoAlbum)
-            {
-            //Se não existir nenhum album com o mesmo titulo
-            if (ExisteAlbum(novoAlbum.Titulo) == false)
-            {
-                //Adicionar um novo album
-                lstAlbuns.Add(novoAlbum);
-                return true;
-            }
-            //Caso já exista um album com o nome lido retorna false
-            return false;
         }
 
         /// <summary>
@@ -94,6 +106,8 @@ namespace DL
         /// <param name="titulo"></param>
         /// <returns></returns>
         public static bool RemoverAlbum(string titulo)
+        {
+            try
             {
                 int index = ObterAlbumIndex(titulo);
                 if (index != -1)
@@ -119,17 +133,27 @@ namespace DL
 
                 //Retorna false pq não conseguiu remover o album
                 return false;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
             }
 
-            /// <summary>
-            /// Atribuir uma musica a um album
-            /// </summary>
-            /// <param name="albuns"></param>
-            /// <param name="titulo"></param>
-            /// <param name="musicas"></param>
-            /// <param name="nome"></param>
-            /// <returns></returns>
-            public static bool AtribuirMusica(string titulo, string nome, List<MusicaBO> musicas)
+        }
+
+        /// <summary>
+        /// Atribuir uma musica a um album
+        /// </summary>
+        /// <param name="albuns"></param>
+        /// <param name="titulo"></param>
+        /// <param name="musicas"></param>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        public static bool AtribuirMusica(string titulo, string nome, List<MusicaBO> musicas)
+        {
+            try
             {
                 int albumIndex = ObterAlbumIndex(titulo);
                 //Se o album existir
@@ -150,9 +174,17 @@ namespace DL
                 }
                 //Retorna false se não foi possivel atribuir
                 return false;
+
             }
-            #endregion
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
+        #endregion
     }
+}
+
 

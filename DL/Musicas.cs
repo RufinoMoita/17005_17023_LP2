@@ -44,16 +44,26 @@ namespace DL
         /// <returns></returns>
         public static bool ExisteMusica(string nome)
         {
-            int index = ObterMusicaIndex(nome);
-            if (index != -1)
+            try
             {
-                //Se o titulo da musica de indice index corresponder a titulo
-                if (lstMusicas[index].Nome == nome)
-                    //Retorna true pois existe
-                    return true;
+                int index = ObterMusicaIndex(nome);
+                if (index != -1)
+                {
+                    //Se o titulo da musica de indice index corresponder a titulo
+                    if (lstMusicas[index].Nome == nome)
+                        //Retorna true pois existe
+                        return true;
+                }
+                //Retorna falso se não existir
+                return false;
+
             }
-            //Retorna falso se não existir
-            return false;
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+                throw;
+            }
+
         }
 
         /// <summary>
@@ -64,15 +74,25 @@ namespace DL
         /// <returns></returns>
         public static bool RegistarMusica(MusicaBO novaMusica)
         {
-            //Se não existir nenhuma musica com o mesmo nome
-            if (ExisteMusica(novaMusica.Nome) == false)
+            try
             {
-                //Adicionar uma nova musica
-                lstMusicas.Add(novaMusica);
-                return true;
+                //Se não existir nenhuma musica com o mesmo nome
+                if (ExisteMusica(novaMusica.Nome) == false)
+                {
+                    //Adicionar uma nova musica
+                    lstMusicas.Add(novaMusica);
+                    return true;
+                }
+                //Caso já exista uma musica com o nome lido retorna false
+                return false;
+
             }
-            //Caso já exista uma musica com o nome lido retorna false
-            return false;
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+                throw;
+            }
+
         }
 
         /// <summary>
@@ -83,6 +103,7 @@ namespace DL
         /// <returns></returns>
         public static bool RemoverMusica(string nome)
         {
+            try
             {
                 int index = ObterMusicaIndex(nome);
                 if (index != -1)
@@ -96,7 +117,7 @@ namespace DL
                             for (int j = 0; j < DL.Albuns.lstAlbuns[i].M.Count; j++)
                             {
                                 if (DL.Albuns.lstAlbuns[i].M[j].Nome == nome)
-                                DL.Albuns.lstAlbuns[i].M.RemoveAt(j);
+                                    DL.Albuns.lstAlbuns[i].M.RemoveAt(j);
                             }
                         }
                         //Remover a musica da lista de musicas indice index
@@ -107,8 +128,14 @@ namespace DL
                 }
                 //Retorna false pq não conseguiu remover a musica
                 return false;
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
             }
         }
-        #endregion
     }
+    #endregion
 }

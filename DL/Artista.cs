@@ -42,25 +42,37 @@ namespace DL
         /// <returns></returns>
         public static bool ExisteArtista(string nomeArtista)
         {
-            int index = ObterArtistaIndex(nomeArtista);
-
-            if (index != -1)
+            try
             {
-                //Se o codigo de artista existir na posição de incide "index"
-                if (lstArtistas[index].NomeArtista == nomeArtista)
-                    return true;  //retorna true pq o artista foi encontrado
+                int index = ObterArtistaIndex(nomeArtista);
+
+                if (index != -1)
+                {
+                    //Se o codigo de artista existir na posição de incide "index"
+                    if (lstArtistas[index].NomeArtista == nomeArtista)
+                        return true;  //retorna true pq o artista foi encontrado
+                }
+                //Caso não encontre retorna false
+                return false;
+
             }
-            //Caso não encontre retorna false
-            return false;
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+
         }
 
-            /// <summary>
-            /// Registar um novo artista
-            /// </summary>
-            /// <param name="artistas"></param>
-            /// <param name="novoArtista"></param>
-            /// <returns></returns>
-            public static bool RegistarArtista(ArtistaBO novoArtista)
+        /// <summary>
+        /// Registar um novo artista
+        /// </summary>
+        /// <param name="artistas"></param>
+        /// <param name="novoArtista"></param>
+        /// <returns></returns>
+        public static bool RegistarArtista(ArtistaBO novoArtista)
+        {
+            try
             {
                 //Se não existir nenhum artista com o mesmo codigo do artista a registar
                 if (ExisteArtista(novoArtista.NomeArtista) == false)
@@ -72,41 +84,51 @@ namespace DL
 
                 //Caso o nome já exista, retorna false
                 return false;
-            }
 
-            /// <summary>
-            /// Remover um artista específico
-            /// </summary>
-            /// <param name="artistas"></param>
-            /// <param name="nomeArtista"></param>
-            /// <returns></returns>
-            public static bool RemoverArtista(string nomeArtista)
+            }
+            catch (Exception e)
             {
-                int index = ObterArtistaIndex(nomeArtista);
-                if (index != -1)
-                {
-                    //Caso o artista exista
-                    if (lstArtistas[index].NomeArtista == nomeArtista)
-                    {
-                        //Remove o utilizador do indice "index"
-                        lstArtistas.RemoveAt(index);
-                        //Retorna true pois foi eliminado
-                        return true;
-                    }
-                }
-                //Retorna false pois não conseguiu encontrar o artista
-                return false;
+                Console.WriteLine(e.Message);
+                throw;
             }
 
-            /// <summary>
-            /// Atribuir um album a um artista
-            /// </summary>
-            /// <param name="artistas"></param>
-            /// <param name="nomeArtista"></param>
-            /// <param name="albuns"></param>
-            /// <param name="titulo"></param>
-            /// <returns></returns>
-            public static bool AtribuirAlbum(string nomeArtista, string titulo, List<AlbumBO> albuns)
+        }
+
+        /// <summary>
+        /// Remover um artista específico
+        /// </summary>
+        /// <param name="artistas"></param>
+        /// <param name="nomeArtista"></param>
+        /// <returns></returns>
+        public static bool RemoverArtista(string nomeArtista)
+        {
+            int index = ObterArtistaIndex(nomeArtista);
+            if (index != -1)
+            {
+                //Caso o artista exista
+                if (lstArtistas[index].NomeArtista == nomeArtista)
+                {
+                    //Remove o utilizador do indice "index"
+                    lstArtistas.RemoveAt(index);
+                    //Retorna true pois foi eliminado
+                    return true;
+                }
+            }
+            //Retorna false pois não conseguiu encontrar o artista
+            return false;
+        }
+
+        /// <summary>
+        /// Atribuir um album a um artista
+        /// </summary>
+        /// <param name="artistas"></param>
+        /// <param name="nomeArtista"></param>
+        /// <param name="albuns"></param>
+        /// <param name="titulo"></param>
+        /// <returns></returns>
+        public static bool AtribuirAlbum(string nomeArtista, string titulo, List<AlbumBO> albuns)
+        {
+            try
             {
                 int artistaIndex = ObterArtistaIndex(nomeArtista);
                 if (artistaIndex != -1)
@@ -124,7 +146,15 @@ namespace DL
                     }
                 }
                 return false;
+
             }
-            #endregion
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+
         }
+        #endregion
     }
+}
