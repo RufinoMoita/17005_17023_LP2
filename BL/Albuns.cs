@@ -206,12 +206,12 @@ namespace BL
                 return false;
             else
             {
-                //Listar a lista de albuns do artista
-                foreach (AlbumBO album in DL.Artistas.lstArtistas[existe].A)
+
+                for (int i = 0; i < DL.Artistas.lstArtistas[existe].A.Count; i++)
                 {
-                    Console.WriteLine("----Album----");
-                    Console.WriteLine("Título: " + album.Titulo + "\n" + "Ano: " + album.Ano + "\n" + "Unidades Vendidas:" + album.UnidadesVendidas + "\n\n");
+                    Console.WriteLine(DL.Artistas.lstArtistas[existe].A.ToString());
                 }
+
             }
             return true;
         }

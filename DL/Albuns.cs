@@ -13,10 +13,11 @@ namespace DL
 {
     public class Albuns
     {
+
         #region Objetos
         public static List<AlbumBO> lstAlbuns = new List<AlbumBO>();
         #endregion
-
+        
         #region Métodos
         /// <summary>
         /// Obter posição do album na lista
