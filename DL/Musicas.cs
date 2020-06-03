@@ -90,7 +90,16 @@ namespace DL
                     //Se encontrar uma musica com o titulo lido
                     if (lstMusicas[index].Nome == nome)
                     {
-                        //Remover a musica de indice index
+                        //Remover a musica do album
+                        for (int i = 0; i < DL.Albuns.lstAlbuns.Count; i++)
+                        {
+                            for (int j = 0; j < DL.Albuns.lstAlbuns[i].M.Count; j++)
+                            {
+                                if (DL.Albuns.lstAlbuns[i].M[j].Nome == nome)
+                                DL.Albuns.lstAlbuns[i].M.RemoveAt(j);
+                            }
+                        }
+                        //Remover a musica da lista de musicas indice index
                         lstMusicas.RemoveAt(index);
                         //Retorna verdadeiro pq a musica foi removida
                         return true;

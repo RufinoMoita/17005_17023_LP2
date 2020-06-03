@@ -89,19 +89,26 @@ namespace BL
         /// <returns></returns>
         public static bool ListarMusicasPorAlbum(string nome)
         {
-            int existe;
+            int existe, contador = 0;
             existe = DL.Albuns.ObterAlbumIndex(nome);
             if (existe == -1)
                 return false;
             else
             {
-                //Listar a lista de musicas do abum
-                foreach (MusicaBO musica in DL.Albuns.lstAlbuns[existe].M)
+                for (int i = 0; i < DL.Albuns.lstAlbuns[existe].M.Count; i++)
                 {
-                    Console.WriteLine("----Musica----");
-                    Console.WriteLine("Título: " + musica.Nome + "\n\n");
+                    //Listar a lista de musicas do abum
+                    Console.WriteLine(DL.Albuns.lstAlbuns[existe].M[i].ToString());
+                    contador++;
                 }
             }
+
+            if (contador == 0)
+            {
+                Console.WriteLine("Não existem músicas associadas a este album!!\n\n");
+                Console.ReadKey();
+                Console.WriteLine();
+            }   
             return true;
         }
 

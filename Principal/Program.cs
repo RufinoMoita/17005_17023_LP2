@@ -8,9 +8,7 @@
 
 
 using System;
-using System.Collections.Generic;
 using BL;
-using System.IO;
 
 namespace Main
 {
@@ -76,7 +74,9 @@ namespace Main
                     #region Adicionar Artista
                     if (opcao == '1') // Adicionar Artista
                     {
-
+                        bool loop = true;
+                        opcao2 = 0;
+                        tipoArtista = "vazio";
                         //Incrementar o código do artista
                         codigoArtista++;
 
@@ -85,11 +85,34 @@ namespace Main
                         // Pede o nome do artista
                         Console.Write("\nNome: "); nomeArtista = Console.ReadLine();
 
-                        // Pede o tipo do artista
-                        Console.Write("\nTipo:"); tipoArtista = Console.ReadLine();
-
+                        while (loop == true)
+                        {
+                            // Pede o tipo do artista
+                            Console.Write("\nTipo:\n1-Cantor\n2-Instrumentista\n3-Banda\nR:"); opcao2 = int.Parse(Console.ReadLine());
+                            if (opcao2 == 1)
+                            {
+                                loop = false;
+                                tipoArtista = "Cantor";
+                            }
+                            else if (opcao2 == 2)
+                            {
+                                loop = false;
+                                tipoArtista = "Instrumentista";
+                            }
+                            else if (opcao2 == 3)
+                            {
+                                loop = false;
+                                tipoArtista = "Banda";
+                            }
+                            else
+                            {
+                                Console.WriteLine("Opcão Inválida!!\n\n");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                        }
                         //Pede a duração do contrato
-                        Console.Write("\nDuração do contrato: "); duracao = int.Parse(Console.ReadLine());
+                        Console.Write("\nDuração do contrato (anos): "); duracao = int.Parse(Console.ReadLine());
 
                         // Limpa a Consola
                         Console.Clear();
@@ -137,6 +160,9 @@ namespace Main
                     else if (opcao == '4') // Editar Artistas
                     {
                         int index;
+                        opcao2 = 0;
+                        bool loop = true;
+                        tipoArtista = "vazio";
                         Console.Write("\nNome do artista: "); nomeArtista = Console.ReadLine();
                         Console.Clear();
                         index = BL.Artistas.ExisteArtista(nomeArtista);
@@ -149,10 +175,31 @@ namespace Main
                             Console.Write("\nNome: "); nomeArtista = Console.ReadLine();
 
                             // Pede o tipo do artista
-                            Console.Write("\nTipo:"); tipoArtista = Console.ReadLine();
+                            Console.Write("\nTipo:\n1-Cantor\n2-Instrumentista\n3-Banda\nR:"); opcao2 = int.Parse(Console.ReadLine());
+                            if (opcao2 == 1)
+                            {
+                                loop = false;
+                                tipoArtista = "Cantor";
+                            }
+                            else if (opcao2 == 2)
+                            {
+                                loop = false;
+                                tipoArtista = "Instrumentista";
+                            }
+                            else if (opcao2 == 3)
+                            {
+                                loop = false;
+                                tipoArtista = "Banda";
+                            }
+                            else
+                            {
+                                Console.WriteLine("Opcão Inválida!!\n\n");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
 
                             //Pede a duração do contrato
-                            Console.Write("\nDuração do contrato: "); duracao = int.Parse(Console.ReadLine());
+                            Console.Write("\nDuração do contrato (em anos):"); duracao = int.Parse(Console.ReadLine());
 
                             // Edita o novo album
                             BL.Artistas.EditarArtistaBO(index, tipoArtista, nomeArtista, duracao);
@@ -235,6 +282,7 @@ namespace Main
                         //Incrementar o código do album
                         codigoAlbum++;
                         opcao2 = 0;
+                        bool loop = true;
                         estilo = "vazio";
 
                         Console.WriteLine("--Adicionar AlbumBO--\n\n");
@@ -243,26 +291,36 @@ namespace Main
                         Console.Write("\nTitulo: "); nomeAlbum = Console.ReadLine();
 
                         // Pede o estilo do album
-                        //while (opcao2 != 1 || opcao2 != 2 || opcao2 != 3 || opcao2 != 4)
-                        //{
+                        while (loop == true)
+                        {
                             Console.Write("\nEstilo musical:\n1-Pop\n2-Rock\n3-Indie\n4-Punk\nR:"); opcao2 = int.Parse(Console.ReadLine());
                             if (opcao2 == 1)
+                            {
                                 estilo = "Pop";
+                                loop = false;
+                            }
                             else if (opcao2 == 2)
+                            {
                                 estilo = "Rock";
+                                loop = false;
+                            }
                             else if (opcao2 == 3)
+                            {
                                 estilo = "Indie";
+                                loop = false;
+                            }
                             else if (opcao2 == 4)
+                            {
                                 estilo = "Punk";
+                                loop = false;
+                            }
                             else
                             {
                                 Console.WriteLine("Opção Inválida!!\n\n");
                                 Console.ReadKey();
                                 Console.Clear();
                             }
-                        //}
-
-
+                        }
 
                         //Pede o ano de lançamento
                         Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
@@ -307,6 +365,9 @@ namespace Main
                     {
                         // Pede o titulo do album
                         int index;
+                        bool loop = true;
+                        opcao2 = 0;
+                        estilo = "vazio";
                         Console.Write("\nTitulo do Album: "); nomeAlbum = Console.ReadLine();
                         Console.Clear();
                         index = BL.Albuns.ExisteAlbum(nomeAlbum);
@@ -318,7 +379,36 @@ namespace Main
                             Console.Write("\nTitulo Novo: "); nomeAlbum = Console.ReadLine();
 
                             // Pede o estilo do album
-                            Console.Write("\nEstilo musical:"); estilo = Console.ReadLine();
+                            while (loop == true)
+                            {
+                                Console.Write("\nEstilo musical:\n1-Pop\n2-Rock\n3-Indie\n4-Punk\nR:"); opcao2 = int.Parse(Console.ReadLine());
+                                if (opcao2 == 1)
+                                {
+                                    estilo = "Pop";
+                                    loop = false;
+                                }
+                                else if (opcao2 == 2)
+                                {
+                                    estilo = "Rock";
+                                    loop = false;
+                                }
+                                else if (opcao2 == 3)
+                                {
+                                    estilo = "Indie";
+                                    loop = false;
+                                }
+                                else if (opcao2 == 4)
+                                {
+                                    estilo = "Punk";
+                                    loop = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opção Inválida!!\n\n");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                }
+                            }
 
                             //Pede o ano de lançamento
                             Console.Write("\nAno de lançamento: "); ano = int.Parse(Console.ReadLine());
