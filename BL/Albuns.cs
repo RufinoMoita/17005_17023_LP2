@@ -209,7 +209,7 @@ namespace BL
 
                 for (int i = 0; i < DL.Artistas.lstArtistas[existe].A.Count; i++)
                 {
-                    Console.WriteLine(DL.Artistas.lstArtistas[existe].A.ToString());
+                    Console.WriteLine(DL.Artistas.lstArtistas[existe].A[i].ToString());
                 }
 
             }
